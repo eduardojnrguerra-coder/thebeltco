@@ -72,43 +72,6 @@
         "btn_link": "shopify://blogs/news/how-to-choose-the-right-belt-size"
       }
     },
-    "testimonials": {
-      "type": "testimonials",
-      "blocks": {
-        "testimonial_1": {
-          "type": "testimonial",
-          "settings": {
-            "text": "The quality of this belt is outstanding. I've been wearing it daily for months and it still looks brand new.",
-            "author": "Thabo M.",
-            "rating": 5
-          }
-        },
-        "testimonial_2": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Best belt I've ever owned. The leather is premium and the craftsmanship is top-notch. Highly recommended!",
-            "author": "Sarah van der Merwe",
-            "rating": 5
-          }
-        },
-        "testimonial_3": {
-          "type": "testimonial",
-          "settings": {
-            "text": "Bought this as a gift for my husband. He absolutely loves it. The quality is incredible for the price.",
-            "author": "Priya N.",
-            "rating": 5
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_1",
-        "testimonial_2",
-        "testimonial_3"
-      ],
-      "settings": {
-        "heading": "What Our Customers Say"
-      }
-    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -168,7 +131,6 @@
     "best-sellers",
     "brand-story",
     "size-guide-teaser",
-    "testimonials",
     "faq",
     "final-cta"
   ]
