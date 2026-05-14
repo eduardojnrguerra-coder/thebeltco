@@ -48,8 +48,8 @@
       "settings": {
         "heading": "Best Sellers",
         "subheading": "",
-        "collection": "belts",
-        "product_limit": 4,
+        "collection": "best-sellers",
+        "product_limit": 8,
         "grid": "4",
         "show_quick_add": true
       }
