@@ -2,7 +2,7 @@
   <div class="page-width">
     {% render 'breadcrumb' %}
 
-    <h1 class="main-cart__title">{{ section.settings.cart_heading | default: 'cart.general.title' | t }}</h1>
+    <h1 class="main-cart__title">{% if section.settings.cart_heading != blank %}{{ section.settings.cart_heading }}{% else %}{{ 'cart.general.title' | t }}{% endif %}</h1>
 
     {%- if cart.item_count > 0 -%}
       <form action="{{ routes.cart_url }}" method="post" class="main-cart__form" id="cart-form">

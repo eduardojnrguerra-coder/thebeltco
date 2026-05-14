@@ -9,6 +9,6 @@
   </div>
   <div class="trust-line__item">
     {% render 'icon', name: 'truck', size: 16 %}
-    <span>{{ settings.delivery_text | default: 'sections.delivery_returns.delivery' | t }}</span>
+    <span>{% if settings.delivery_text != blank %}{{ settings.delivery_text }}{% else %}{{ 'sections.delivery_returns.delivery' | t }}{% endif %}</span>
   </div>
 </div>
