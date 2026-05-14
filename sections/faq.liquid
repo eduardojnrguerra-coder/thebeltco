@@ -9,17 +9,13 @@
         {% capture accordion_content %}
           {{ block.settings.answer }}
         {% endcapture %}
-        <div class="faq__item" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" {{ block.shopify_attributes }}>
-          <div itemprop="name" class="faq__question-hidden" hidden>{{ block.settings.question }}</div>
+        <div class="faq__item" {{ block.shopify_attributes }}>
           {% render 'accordion-panel',
             heading: block.settings.question,
             content: accordion_content,
             open: false,
             id: block.id
           %}
-          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer" hidden>
-            <div itemprop="text">{{ block.settings.answer }}</div>
-          </div>
         </div>
       {%- endfor -%}
     </div>
