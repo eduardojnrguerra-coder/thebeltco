@@ -3,19 +3,19 @@
     <div class="trust-badges__grid">
       <div class="trust-badge">
         {% render 'icon', name: 'leaf', size: 32, classes: 'trust-badge__icon' %}
-        <span class="trust-badge__text">{% if section.settings.badge_1_text != blank %}{{ section.settings.badge_1_text }}{% else %}{{ 'sections.trust_badges.genuine_leather' | t }}{% endif %}</span>
+        <span class="trust-badge__text">{{ section.settings.badge_1_text }}</span>
       </div>
       <div class="trust-badge">
         {% render 'icon', name: 'lock', size: 32, classes: 'trust-badge__icon' %}
-        <span class="trust-badge__text">{% if section.settings.badge_2_text != blank %}{{ section.settings.badge_2_text }}{% else %}{{ 'sections.trust_badges.secure_checkout' | t }}{% endif %}</span>
+        <span class="trust-badge__text">{{ section.settings.badge_2_text }}</span>
       </div>
       <div class="trust-badge">
         {% render 'icon', name: 'map-pin', size: 32, classes: 'trust-badge__icon' %}
-        <span class="trust-badge__text">{% if section.settings.badge_3_text != blank %}{{ section.settings.badge_3_text }}{% else %}{{ 'sections.trust_badges.sa_store' | t }}{% endif %}</span>
+        <span class="trust-badge__text">{{ section.settings.badge_3_text }}</span>
       </div>
       <div class="trust-badge">
         {% render 'icon', name: 'undo', size: 32, classes: 'trust-badge__icon' %}
-        <span class="trust-badge__text">{% if section.settings.badge_4_text != blank %}{{ section.settings.badge_4_text }}{% else %}{{ 'sections.trust_badges.easy_returns' | t }}{% endif %}</span>
+        <span class="trust-badge__text">{{ section.settings.badge_4_text }}</span>
       </div>
     </div>
   </div>
