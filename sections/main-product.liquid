@@ -214,12 +214,14 @@
           <div class="product-info__accordions">
             {%- assign material_text = material_mf | default: section.settings.material_default -%}
             {%- if material_text != blank -%}
-              {% render 'accordion-panel', heading: 'sections.materials.heading' | t, content: material_text, open: false, id: 'materials' %}
+              {%- capture materials_heading -%}{{ 'sections.materials.heading' | t }}{%- endcapture -%}
+              {% render 'accordion-panel', heading: materials_heading, content: material_text, open: false, id: 'materials' %}
             {%- endif -%}
 
             {%- assign care_text = care_instructions | default: section.settings.care_default -%}
             {%- if care_text != blank -%}
-              {% render 'accordion-panel', heading: 'sections.leather_care.heading' | t, content: care_text, open: false, id: 'leather-care' %}
+              {%- capture leather_care_heading -%}{{ 'sections.leather_care.heading' | t }}{%- endcapture -%}
+              {% render 'accordion-panel', heading: leather_care_heading, content: care_text, open: false, id: 'leather-care' %}
             {%- endif -%}
 
             {%- assign sg_text = size_guide_note | default: '' -%}
@@ -228,12 +230,14 @@
               {%- assign sg_text = sg_page.content -%}
             {%- endif -%}
             {%- if sg_text != blank -%}
-              {% render 'accordion-panel', heading: 'sections.size_guide.heading' | t, content: sg_text, open: false, id: 'size-guide' %}
+              {%- capture size_guide_heading -%}{{ 'sections.size_guide.heading' | t }}{%- endcapture -%}
+              {% render 'accordion-panel', heading: size_guide_heading, content: sg_text, open: false, id: 'size-guide' %}
             {%- endif -%}
 
             {%- assign delivery_text = delivery_note | default: section.settings.delivery_default -%}
             {%- assign returns_text = return_note | default: section.settings.returns_default -%}
             {%- if delivery_text != blank or returns_text != blank -%}
+              {%- capture delivery_returns_heading -%}{{ 'sections.delivery_returns.heading' | t }}{%- endcapture -%}
               {%- capture dr_content -%}
                 {%- if delivery_text != blank -%}
                   {% render 'icon', name: 'truck', size: 18 %} {{ delivery_text }}<br><br>
@@ -242,7 +246,7 @@
                   {% render 'icon', name: 'undo', size: 18 %} {{ returns_text }}
                 {%- endif -%}
               {%- endcapture -%}
-              {% render 'accordion-panel', heading: 'sections.delivery_returns.heading' | t, content: dr_content, open: true, id: 'delivery-returns' %}
+              {% render 'accordion-panel', heading: delivery_returns_heading, content: dr_content, open: true, id: 'delivery-returns' %}
             {%- endif -%}
           </div>
         </div>
