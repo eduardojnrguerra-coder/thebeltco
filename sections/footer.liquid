@@ -89,7 +89,7 @@
           <span class="footer__payment-label">{{ 'footer.payment' | t }}</span>
           <div class="footer__payment-icons">
             {%- for type in shop.enabled_payment_types -%}
-              {{ type | payment_type_svg_tag: class: 'footer__payment-icon' }}
+              <span class="footer__payment-icon">{{ type | payment_type_svg_tag }}</span>
             {%- endfor -%}
           </div>
         {%- endif -%}

@@ -1,3 +1,4 @@
+{%- if section.blocks.size > 0 -%}
 <section class="testimonials">
   <div class="page-width">
     <div class="section-header">
@@ -15,14 +16,9 @@
         </div>
       {%- endfor -%}
     </div>
-
-    {%- if section.blocks.size == 0 -%}
-      <div class="placeholder-section">
-        <p>Add testimonials in the theme editor.</p>
-      </div>
-    {%- endif -%}
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
@@ -50,13 +46,13 @@
           "type": "textarea",
           "id": "text",
           "label": "Testimonial text",
-          "default": "The quality of this belt is outstanding. I've been wearing it daily for months and it still looks brand new. Worth every cent."
+          "default": ""
         },
         {
           "type": "text",
           "id": "author",
           "label": "Author name",
-          "default": "Thabo M."
+          "default": ""
         },
         {
           "type": "range",
@@ -72,33 +68,7 @@
   ],
   "presets": [
     {
-      "name": "Testimonials",
-      "blocks": [
-        {
-          "type": "testimonial",
-          "settings": {
-            "text": "The quality of this belt is outstanding. I've been wearing it daily for months and it still looks brand new.",
-            "author": "Thabo M.",
-            "rating": 5
-          }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "text": "Best belt I've ever owned. The leather is premium and the craftsmanship is top-notch. Highly recommended!",
-            "author": "Sarah van der Merwe",
-            "rating": 5
-          }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "text": "Bought this as a gift for my husband. He absolutely loves it. The quality is incredible for the price.",
-            "author": "Priya N.",
-            "rating": 5
-          }
-        }
-      ]
+      "name": "Testimonials"
     }
   ]
 }

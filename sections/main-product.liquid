@@ -242,8 +242,7 @@
                   {% render 'icon', name: 'undo', size: 18 %} {{ returns_text }}
                 {%- endif -%}
               {%- endcapture -%}
-              {%- assign dr_heading = 'sections.delivery_returns.heading' | t -%}
-              {% render 'accordion-panel', heading: dr_heading, content: dr_content, open: true, id: 'delivery-returns' %}
+              {% render 'accordion-panel', heading: 'sections.delivery_returns.heading' | t, content: dr_content, open: true, id: 'delivery-returns' %}
             {%- endif -%}
           </div>
         </div>

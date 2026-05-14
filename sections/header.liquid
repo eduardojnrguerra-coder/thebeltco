@@ -8,7 +8,7 @@
     <div class="header__logo">
       {%- if settings.logo != blank -%}
         <a href="{{ routes.root_url }}" class="header__logo-link">
-          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', widths: '160,240,300', alt: shop.name, width: settings.logo_width, onerror: "this.style.display='none'" }}
+          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width, onerror: "this.style.display='none'" }}
         </a>
       {%- else -%}
         <a href="{{ routes.root_url }}" class="header__logo-text">{{ settings.logo_text | default: shop.name }}</a>
@@ -17,7 +17,8 @@
 
     <nav class="header__nav" data-header-nav role="navigation" aria-label="Main navigation">
       <ul class="header__nav-list">
-        {%- for link in linklists['main-menu'].links -%}
+        {%- assign main_menu = linklists[section.settings.main_menu] -%}
+        {%- for link in main_menu.links -%}
           <li class="header__nav-item{% if link.links != blank %} header__nav-item--has-submenu{% endif %}">
             <a href="{{ link.url }}" class="header__nav-link{% if link.active %} header__nav-link--active{% endif %}">
               {{ link.title }}
@@ -64,7 +65,7 @@
     </div>
     <nav class="header__mobile-nav">
       <ul class="header__mobile-nav-list">
-        {%- for link in linklists['main-menu'].links -%}
+        {%- for link in main_menu.links -%}
           <li class="header__mobile-nav-item{% if link.links != blank %} header__mobile-nav-item--has-submenu{% endif %}">
             <a href="{{ link.url }}" class="header__mobile-nav-link">{{ link.title }}</a>
             {%- if link.links != blank -%}
@@ -113,6 +114,12 @@
     {
       "type": "header",
       "content": "Header settings"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main menu",
+      "default": "main-menu"
     }
   ],
   "presets": [
