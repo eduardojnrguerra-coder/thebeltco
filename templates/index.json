@@ -68,8 +68,8 @@
       "settings": {
         "heading": "What Our Customers Say"
       },
-      "blocks": [
-        {
+      "blocks": {
+        "testimonial_1": {
           "type": "testimonial",
           "settings": {
             "text": "The quality of this belt is outstanding. I've been wearing it daily for months and it still looks brand new.",
@@ -77,7 +77,7 @@
             "rating": 5
           }
         },
-        {
+        "testimonial_2": {
           "type": "testimonial",
           "settings": {
             "text": "Best belt I've ever owned. The leather is premium and the craftsmanship is top-notch. Highly recommended!",
@@ -85,7 +85,7 @@
             "rating": 5
           }
         },
-        {
+        "testimonial_3": {
           "type": "testimonial",
           "settings": {
             "text": "Bought this as a gift for my husband. He absolutely loves it. The quality is incredible for the price.",
@@ -93,43 +93,45 @@
             "rating": 5
           }
         }
-      ]
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
     },
     "faq": {
       "type": "faq",
       "settings": {
         "heading": "Frequently Asked Questions"
       },
-      "blocks": [
-        {
+      "blocks": {
+        "faq_1": {
           "type": "question",
           "settings": {
             "question": "How do I find my belt size?",
             "answer": "Measure a belt you already own from the buckle edge to the hole you use most. Alternatively, measure your waist where you wear your belt and add 2 inches."
           }
         },
-        {
+        "faq_2": {
           "type": "question",
           "settings": {
             "question": "How long does delivery take?",
             "answer": "We dispatch orders within 1-2 business days. Delivery takes 2-5 business days within South Africa, depending on your location."
           }
         },
-        {
+        "faq_3": {
           "type": "question",
           "settings": {
             "question": "What is your return policy?",
             "answer": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt in its original condition for a full refund."
           }
         },
-        {
+        "faq_4": {
           "type": "question",
           "settings": {
             "question": "Are your belts genuine leather?",
             "answer": "Yes, all our belts are crafted from premium full-grain leather, sourced ethically and hand-finished by skilled artisans."
           }
         }
-      ]
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4"]
     },
     "final-cta": {
       "type": "final-cta",
