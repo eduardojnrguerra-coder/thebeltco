@@ -48,7 +48,7 @@
       "settings": {
         "heading": "Best Sellers",
         "subheading": "",
-        "collection": "",
+        "collection": "belts",
         "product_limit": 4,
         "grid": "4",
         "show_quick_add": true
@@ -69,7 +69,7 @@
         "heading": "Find Your Size",
         "text": "Not sure which size to order? Our simple size guide will help you get the perfect fit.",
         "btn_label": "Size Guide",
-        "btn_link": ""
+        "btn_link": "shopify://blogs/news/how-to-choose-the-right-belt-size"
       }
     },
     "testimonials": {
