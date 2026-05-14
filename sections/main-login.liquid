@@ -1,0 +1,37 @@
+<section class="main-login">
+  <div class="page-width">
+    <div class="customer-form">
+      <h1 class="customer-form__title">{{ 'customer.login.title' | t }}</h1>
+
+      {% form 'customer_login', class: 'customer-form__form' %}
+        {{ form.errors | default_errors }}
+
+        <div class="customer-form__field">
+          <label for="customer_email">{{ 'customer.login.email' | t }}</label>
+          <input type="email" name="customer[email]" id="customer_email" required autocomplete="email">
+        </div>
+
+        <div class="customer-form__field">
+          <label for="customer_password">{{ 'customer.login.password' | t }}</label>
+          <input type="password" name="customer[password]" id="customer_password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--lg customer-form__submit">{{ 'customer.login.sign_in' | t }}</button>
+
+        <div class="customer-form__links">
+          <a href="{{ routes.account_register_url }}">{{ 'customer.login.create_account' | t }}</a>
+          <a href="{{ routes.account_recovery_url }}">{{ 'customer.login.forgot_password' | t }}</a>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main login",
+  "tag": "section",
+  "class": "section section--main-login",
+  "settings": []
+}
+{% endschema %}

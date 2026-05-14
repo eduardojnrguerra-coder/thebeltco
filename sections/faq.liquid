@@ -1,0 +1,108 @@
+<section class="faq" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="faq__list">
+      {%- for block in section.blocks -%}
+        {% capture accordion_content %}
+          {{ block.settings.answer }}
+        {% endcapture %}
+        <div class="faq__item" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question" {{ block.shopify_attributes }}>
+          <div itemprop="name" class="faq__question-hidden" hidden>{{ block.settings.question }}</div>
+          {% render 'accordion-panel',
+            heading: block.settings.question,
+            content: accordion_content,
+            open: false,
+            id: block.id
+          %}
+          <div itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer" hidden>
+            <div itemprop="text">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.blocks.size == 0 -%}
+      <div class="placeholder-section">
+        <p>Add FAQ items in the theme editor.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "section section--faq",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How do I find my belt size?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Measure a belt you already own from the buckle edge to the hole you use most. Alternatively, measure your waist where you wear your belt and add 2 inches."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I find my belt size?",
+            "answer": "Measure a belt you already own from the buckle edge to the hole you use most. Alternatively, measure your waist where you wear your belt and add 2 inches."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "We dispatch orders within 1-2 business days. Delivery takes 2-5 business days within South Africa, depending on your location."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt in its original condition for a full refund."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Are your belts genuine leather?",
+            "answer": "Yes, all our belts are crafted from premium full-grain leather, sourced ethically and hand-finished by skilled artisans."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+<section class="related-products">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+    </div>
+
+    {%- assign related_products = '' | split: '' -%}
+    {%- if product.metafields.custom.related_products != blank -%}
+      {%- assign related_products = product.metafields.custom.related_products.value -%}
+    {%- elsif product.collections.first != blank -%}
+      {%- assign related_products = product.collections.first.products | where: 'available' -%}
+    {%- endif -%}
+
+    {%- if related_products.size > 0 -%}
+      <div class="product-grid product-grid--4 columns-4">
+        {%- for related in related_products limit: section.settings.limit -%}
+          {%- unless related.handle == product.handle -%}
+            <div class="product-grid__item">
+              {% render 'card-product', product: related, show_quick_add: false %}
+            </div>
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Related products",
+  "tag": "section",
+  "class": "section section--related-products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Complete the Look"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Products to show",
+      "min": 4,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related products"
+    }
+  ]
+}
+{% endschema %}

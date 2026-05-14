@@ -1,0 +1,24 @@
+<div class="sticky-atc" data-sticky-atc>
+  <div class="page-width sticky-atc__inner">
+    <div class="sticky-atc__info">
+      {%- if product.featured_media -%}
+        {%- assign sticky_alt = product.title | escape -%}{{ product.featured_media | image_url: width: 80 | image_tag: class: 'sticky-atc__image', loading: 'lazy', alt: sticky_alt, width: 80, height: 80 }}
+      {%- endif -%}
+      <div class="sticky-atc__details">
+        <span class="sticky-atc__title">{{ product.title | truncate: 30 }}</span>
+        <span class="sticky-atc__price" data-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+      </div>
+    </div>
+    <button
+      class="btn btn--primary sticky-atc__btn"
+      data-sticky-add-btn
+      {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+    >
+      {%- if product.selected_or_first_available_variant.available -%}
+        {{ 'products.product.add_to_cart' | t }}
+      {%- else -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- endif -%}
+    </button>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<section class="main-article">
+  <div class="page-width">
+    {% render 'breadcrumb' %}
+
+    <article class="article" itemscope itemtype="http://schema.org/Article">
+      {%- if article.image -%}
+        <div class="article__image-wrapper">
+          {%- assign article_img_alt = article.title | escape -%}
+          {{ article.image | image_url: width: 1200 | image_tag: class: 'article__image', widths: '600,800,1200', sizes: '100vw', loading: 'eager', alt: article_img_alt, width: article.image.width, height: article.image.height }}
+        </div>
+      {%- endif -%}
+
+      <h1 class="article__title" itemprop="headline">{{ article.title }}</h1>
+
+      <div class="article__meta">
+        <time itemprop="datePublished" datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+        <span itemprop="author">{{ article.author }}</span>
+        {%- if article.tags.size > 0 -%}
+          <div class="article__tags">
+            {%- for tag in article.tags -%}
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__tag">{{ tag }}</a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="article__content rte" itemprop="articleBody">
+        {{ article.content }}
+      </div>
+    </article>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main article",
+  "tag": "section",
+  "class": "section section--main-article",
+  "settings": []
+}
+{% endschema %}

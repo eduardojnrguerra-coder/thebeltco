@@ -1,0 +1,85 @@
+{
+  "current": {
+    "colors": {
+      "color_primary": "#8B5E3C",
+      "color_primary_dark": "#6B4226",
+      "color_secondary": "#C4956A",
+      "color_accent": "#D4A574",
+      "color_bg": "#FAF6F1",
+      "color_bg_alt": "#F0E8DE",
+      "color_text": "#2C1810",
+      "color_text_light": "#6B5B4E",
+      "color_border": "#D4C5B5",
+      "color_success": "#2D6A4F",
+      "color_error": "#A04040",
+      "color_sale": "#A04040",
+      "color_button_text": "#FFFFFF"
+    },
+    "typography": {
+      "heading_font": "georgia",
+      "body_font": "system",
+      "base_font_size": 16,
+      "heading_scale": 125
+    },
+    "header": {
+      "show_announcement": true,
+      "announcement_text": "Free delivery on orders over R500",
+      "announcement_link": "",
+      "show_search": true,
+      "sticky_header": true,
+      "logo": "",
+      "logo_width": 160,
+      "logo_text": "TheBeltCo"
+    },
+    "footer": {
+      "footer_about_text": "Premium leather belts handcrafted in South Africa. Built for work, weekends, and years of use.",
+      "footer_menu": "footer",
+      "social_instagram": "",
+      "social_facebook": "",
+      "social_tiktok": "",
+      "show_payment_icons": true,
+      "show_newsletter": true,
+      "newsletter_heading": "Join the Club",
+      "newsletter_text": "Subscribe for exclusive offers, leather care tips, and new arrivals."
+    },
+    "product_pages": {
+      "gallery_style": "thumbnails",
+      "enable_zoom": true,
+      "show_variant_labels": true,
+      "show_sku": false,
+      "show_quantity_selector": true,
+      "enable_pickup_availability": false,
+      "delivery_text": "Free delivery on orders over R500",
+      "returns_text": "30-day easy returns",
+      "show_related": true,
+      "related_heading": "Complete the Look",
+      "related_limit": 4
+    },
+    "collection_pages": {
+      "grid_columns": "3",
+      "mobile_grid_columns": "2",
+      "show_sorting": true,
+      "show_filters": true,
+      "show_collection_image": true,
+      "show_product_count": true
+    },
+    "cart": {
+      "show_cart_notes": true,
+      "show_shipping_calculator": false,
+      "enable_cart_drawer": true,
+      "cart_heading": "Your Cart"
+    },
+    "seo": {
+      "meta_title": "TheBeltCo – Premium Leather Belts | South Africa",
+      "meta_description": "Premium leather belts handcrafted in South Africa. Durable, timeless belts for work, weekends, and years of use.",
+      "favicon": null,
+      "share_image": null
+    },
+    "social": {
+      "social_instagram_link": "",
+      "social_facebook_link": "",
+      "social_tiktok_link": "",
+      "social_youtube_link": ""
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+  <ol class="breadcrumb__list">
+    <li class="breadcrumb__item">
+      <a class="breadcrumb__link" href="{{ routes.root_url }}">{{ 'general.shop.title' | t }}</a>
+    </li>
+    {%- case template.name -%}
+      {%- when 'product' -%}
+        {%- if collection -%}
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link" href="{{ collection.url }}">{{ collection.title }}</a>
+          </li>
+        {%- endif -%}
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ product.title | truncate: 40 }}</span>
+        </li>
+      {%- when 'collection' -%}
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ collection.title }}</span>
+        </li>
+      {%- when 'blog' -%}
+        {%- if current_tags -%}
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link" href="{{ blog.url }}">{{ blog.title }}</a>
+          </li>
+          <li class="breadcrumb__item breadcrumb__item--current">
+            <span aria-current="page">{{ current_tags.first }}</span>
+          </li>
+        {%- else -%}
+          <li class="breadcrumb__item breadcrumb__item--current">
+            <span aria-current="page">{{ blog.title }}</span>
+          </li>
+        {%- endif -%}
+      {%- when 'article' -%}
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link" href="{{ blog.url }}">{{ blog.title }}</a>
+        </li>
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ article.title | truncate: 40 }}</span>
+        </li>
+      {%- when 'page' -%}
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ page.title }}</span>
+        </li>
+      {%- when 'search' -%}
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ 'search.general.title' | t }}</span>
+        </li>
+      {%- when 'cart' -%}
+        <li class="breadcrumb__item breadcrumb__item--current">
+          <span aria-current="page">{{ 'cart.general.title' | t }}</span>
+        </li>
+    {%- endcase -%}
+  </ol>
+</nav>

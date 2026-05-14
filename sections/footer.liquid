@@ -1,0 +1,114 @@
+<footer class="footer" role="contentinfo">
+  <div class="page-width">
+    <div class="footer__grid">
+      <div class="footer__column footer__column--about">
+        <h3 class="footer__heading">{{ settings.logo_text | default: shop.name }}</h3>
+        <p class="footer__about-text">{{ settings.footer_about_text }}</p>
+        {%- if settings.show_newsletter -%}
+          <div class="footer__newsletter">
+            <h4 class="footer__newsletter-heading">{{ settings.newsletter_heading }}</h4>
+            <p class="footer__newsletter-text">{{ settings.newsletter_text }}</p>
+            {% form 'customer', class: 'footer__newsletter-form' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="footer__newsletter-input-wrapper">
+                <input
+                  class="footer__newsletter-input"
+                  type="email"
+                  name="contact[email]"
+                  value="{{ form.email }}"
+                  placeholder="{{ 'sections.newsletter.placeholder' | t }}"
+                  required
+                  autocomplete="email"
+                >
+                <button class="footer__newsletter-btn" type="submit">
+                  {{ 'sections.newsletter.button' | t }}
+                </button>
+              </div>
+              {%- if form.posted_successfully? -%}
+                <p class="footer__newsletter-success">{{ 'sections.newsletter.success' | t }}</p>
+              {%- endif -%}
+              {%- if form.errors -%}
+                <p class="footer__newsletter-error">{{ form.errors.translated_fields.email }} - {{ form.errors.messages.email }}</p>
+              {%- endif -%}
+            {% endform %}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="footer__column footer__column--links">
+        <h3 class="footer__heading">{{ 'footer.quick_links' | t }}</h3>
+        {%- if linklists[settings.footer_menu] != blank -%}
+          <ul class="footer__link-list">
+            {%- for link in linklists[settings.footer_menu].links -%}
+              <li class="footer__link-item">
+                <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div class="footer__column footer__column--resources">
+        <h3 class="footer__heading">{{ 'collections.general.title' | t }}</h3>
+        <ul class="footer__link-list">
+          {%- for collection in collections limit: 5 -%}
+            {%- if collection.all_products_count > 0 -%}
+              <li class="footer__link-item">
+                <a href="{{ collection.url }}" class="footer__link">{{ collection.title }}</a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="footer__column footer__column--social">
+        <h3 class="footer__heading">{{ 'footer.follow_us' | t }}</h3>
+        <div class="footer__social-links">
+          {%- if settings.social_facebook != blank -%}
+            <a href="{{ settings.social_facebook }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              {% render 'icon', name: 'facebook', size: 22 %}
+            </a>
+          {%- endif -%}
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              {% render 'icon', name: 'instagram', size: 22 %}
+            </a>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <a href="{{ settings.social_tiktok }}" class="footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
+              {% render 'icon', name: 'tiktok', size: 22 %}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__payment">
+        {%- if settings.show_payment_icons -%}
+          <span class="footer__payment-label">{{ 'footer.payment' | t }}</span>
+          <div class="footer__payment-icons">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'footer__payment-icon' }}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      <div class="footer__copyright">
+        <small>{{ 'footer.copyright' | t: year: 'now' | date: '%Y', shop_name: shop.name }}</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}

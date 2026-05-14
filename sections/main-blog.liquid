@@ -1,0 +1,43 @@
+<section class="main-blog">
+  <div class="page-width">
+    {% render 'breadcrumb' %}
+    <h1 class="main-blog__title">{{ blog.title }}</h1>
+
+    {%- if blog.articles.size > 0 -%}
+      <div class="blog-grid">
+        {%- for article in blog.articles -%}
+          <article class="blog-card">
+            {%- if article.image -%}
+              <a href="{{ article.url }}" class="blog-card__image-wrapper">
+                {%- assign blog_img_alt = article.title | escape -%}{{ article.image | image_url: width: 600 | image_tag: class: 'blog-card__image', widths: '300,600', sizes: '(max-width: 767px) 100vw, 33vw', loading: 'lazy', alt: blog_img_alt, width: article.image.width, height: article.image.height }}
+              </a>
+            {%- endif -%}
+            <div class="blog-card__content">
+              <h2 class="blog-card__title">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+              <p class="blog-card__excerpt">{{ article.excerpt_or_content | strip_html | truncate: 150 }}</p>
+              <div class="blog-card__meta">
+                <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
+                <span>{{ article.author }}</span>
+              </div>
+              <a href="{{ article.url }}" class="btn btn--outline btn--sm">{{ 'collections.general.view_all' | t }}</a>
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+      {% render 'pagination', paginate: paginate %}
+    {%- else -%}
+      <p>{{ 'blog.general.no_articles' | t }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main blog",
+  "tag": "section",
+  "class": "section section--main-blog",
+  "settings": []
+}
+{% endschema %}

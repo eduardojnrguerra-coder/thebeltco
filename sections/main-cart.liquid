@@ -1,0 +1,105 @@
+<section class="main-cart">
+  <div class="page-width">
+    {% render 'breadcrumb' %}
+
+    <h1 class="main-cart__title">{{ section.settings.cart_heading | default: 'cart.general.title' | t }}</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" class="main-cart__form" id="cart-form">
+        <div class="main-cart__grid">
+          <div class="main-cart__items">
+            {%- for item in cart.items -%}
+              <div class="cart-item" data-cart-item data-key="{{ item.key }}">
+                <div class="cart-item__image-wrapper">
+                  <a href="{{ item.url }}">
+                    {%- assign cart_item_alt = item.title | escape -%}
+                    {{ item.image | image_url: width: 200 | image_tag: class: 'cart-item__image', widths: '100,200', loading: 'lazy', alt: cart_item_alt }}
+                  </a>
+                </div>
+                <div class="cart-item__details">
+                  <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+                  {%- if item.variant.title != 'Default Title' -%}
+                    <p class="cart-item__variant">{{ item.variant.title }}</p>
+                  {%- endif -%}
+                  <p class="cart-item__price">{{ item.final_line_price | money }}</p>
+                  {%- if item.unit_price_measurement -%}
+                    <p class="cart-item__unit-price">{{ item.unit_price | money }}/{{ item.unit_price_measurement.reference_value }}{{ item.unit_price_measurement.reference_unit }}</p>
+                  {%- endif -%}
+
+                  <div class="cart-item__quantity">
+                    <div class="quantity-selector" data-quantity-selector>
+                      <button class="quantity-selector__btn" type="button" data-cart-update data-key="{{ item.key }}" data-quantity-minus aria-label="Decrease quantity">
+                        {% render 'icon', name: 'minus', size: 16 %}
+                      </button>
+                      <input
+                        class="quantity-selector__input"
+                        type="number"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        data-quantity-input
+                        data-key="{{ item.key }}"
+                      >
+                      <button class="quantity-selector__btn" type="button" data-cart-update data-key="{{ item.key }}" data-quantity-plus aria-label="Increase quantity">
+                        {% render 'icon', name: 'plus', size: 16 %}
+                      </button>
+                    </div>
+                    <button class="cart-item__remove" type="button" data-cart-remove data-key="{{ item.key }}">
+                      {{ 'cart.general.remove' | t }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <div class="main-cart__summary">
+            <div class="cart-summary">
+              <h3 class="cart-summary__title">{{ 'cart.general.total' | t }}</h3>
+              <div class="cart-summary__row">
+                <span>{{ 'cart.general.subtotal' | t }}</span>
+                <span data-cart-subtotal>{{ cart.total_price | money }}</span>
+              </div>
+              <p class="cart-summary__shipping">
+                {%- if cart.total_price >= 50000 -%}
+                  {{ 'cart.general.free_shipping' | t }}
+                {%- else -%}
+                  {{ 'cart.general.shipping_at_checkout' | t }}
+                {%- endif -%}
+              </p>
+              <button type="submit" class="btn btn--primary btn--lg cart-summary__checkout" name="checkout">
+                {{ 'cart.general.checkout' | t }}
+              </button>
+              <button type="submit" class="btn btn--outline cart-summary__update" name="update">
+                {{ 'cart.general.update' | t }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="main-cart__empty">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">
+          {{ 'cart.general.continue_shopping' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "tag": "section",
+  "class": "section section--main-cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cart_heading",
+      "label": "Cart heading",
+      "default": "Your Cart"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,14 @@
+<div class="trust-line">
+  <div class="trust-line__item">
+    {% render 'icon', name: 'lock', size: 16 %}
+    <span>{{ 'homepage.trust_badges.secure_checkout' | t }}</span>
+  </div>
+  <div class="trust-line__item">
+    {% render 'icon', name: 'undo', size: 16 %}
+    <span>{{ 'homepage.trust_badges.easy_returns' | t }}</span>
+  </div>
+  <div class="trust-line__item">
+    {% render 'icon', name: 'truck', size: 16 %}
+    <span>{{ settings.delivery_text | default: 'sections.delivery_returns.delivery' | t }}</span>
+  </div>
+</div>

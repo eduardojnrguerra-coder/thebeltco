@@ -1,0 +1,25 @@
+{%- liquid
+  assign text = text | default: ''
+  assign variant = variant | default: 'default'
+  assign icon = icon | default: ''
+  assign classes = classes | default: ''
+
+  if variant == 'sale'
+    assign bg = settings.color_sale
+  elsif variant == 'new'
+    assign bg = settings.color_success
+  elsif variant == 'leather'
+    assign bg = settings.color_primary
+  else
+    assign bg = settings.color_text
+  endif
+-%}
+
+{%- if text != blank -%}
+  <span class="badge badge--{{ variant }} {{ classes }}" style="--badge-bg: {{ bg }}">
+    {%- if icon != blank -%}
+      {% render 'icon', name: icon, size: 14, classes: 'badge__icon' %}
+    {%- endif -%}
+    <span class="badge__text">{{ text }}</span>
+  </span>
+{%- endif -%}

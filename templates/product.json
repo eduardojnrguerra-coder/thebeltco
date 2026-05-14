@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "Complete the Look",
+        "limit": 4
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "heading": "Recently Viewed",
+        "limit": 4
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "recently-viewed"
+  ]
+}

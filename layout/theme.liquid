@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="//shop.app" crossorigin>
+    <link rel="dns-prefetch" href="//productreviews.shopifycdn.com">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>{{ page_title | default: settings.meta_title }}</title>
+
+    <meta name="description" content="{{ page_description | default: settings.meta_description | escape }}">
+
+    {%- liquid
+      assign is_noindex = false
+      if template.name == 'cart' or template.name == 'search'
+        assign is_noindex = true
+      endif
+      if template.name == 'customers'
+        assign is_noindex = true
+      endif
+      if template.name == 'collection' and current_tags != blank
+        assign is_noindex = true
+      endif
+      if template.name == 'collection' and collection.sort_by != blank and collection.sort_by != 'manual'
+        assign is_noindex = true
+      endif
+    -%}
+    {%- if is_noindex -%}
+      <meta name="robots" content="noindex">
+    {%- endif -%}
+
+    {% render 'social-meta-tags' %}
+
+    {{ content_for_header }}
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    {%- liquid
+      assign heading_font_family = 'Georgia, "Times New Roman", serif'
+      if settings.heading_font == 'times'
+        assign heading_font_family = '"Times New Roman", Georgia, serif'
+      elsif settings.heading_font == 'playfair'
+        assign heading_font_family = '"Playfair Display", Georgia, serif'
+      elsif settings.heading_font == 'lora'
+        assign heading_font_family = 'Lora, Georgia, serif'
+      endif
+
+      assign body_font_family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+      if settings.body_font == 'inter'
+        assign body_font_family = 'Inter, -apple-system, sans-serif'
+      elsif settings.body_font == 'roboto'
+        assign body_font_family = 'Roboto, -apple-system, sans-serif'
+      elsif settings.body_font == 'lato'
+        assign body_font_family = 'Lato, -apple-system, sans-serif'
+      endif
+    -%}
+
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary }};
+        --color-primary-dark: {{ settings.color_primary_dark }};
+        --color-secondary: {{ settings.color_secondary }};
+        --color-accent: {{ settings.color_accent }};
+        --color-bg: {{ settings.color_bg }};
+        --color-bg-alt: {{ settings.color_bg_alt }};
+        --color-text: {{ settings.color_text }};
+        --color-text-light: {{ settings.color_text_light }};
+        --color-border: {{ settings.color_border }};
+        --color-success: {{ settings.color_success }};
+        --color-error: {{ settings.color_error }};
+        --color-sale: {{ settings.color_sale }};
+        --color-button-text: {{ settings.color_button_text }};
+        --font-heading-family: {{ heading_font_family }};
+        --font-body-family: {{ body_font_family }};
+        --font-body-size: {{ settings.base_font_size }}px;
+        --font-heading-scale: {{ settings.heading_scale | divided_by: 100.0 }};
+        --page-width: 1280px;
+        --page-gutter: 1.5rem;
+      }
+    </style>
+
+    {% render 'structured-data-organization' %}
+    {% render 'structured-data-product' %}
+    {% render 'structured-data-breadcrumbs' %}
+
+    {%- if template.name == 'article' and article != blank -%}
+      {%- liquid
+        assign article_desc = article.excerpt_or_content | strip_html | truncate: 300
+      -%}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": {{ article.title | json }},
+        "url": {{ canonical_url | json }},
+        "image": {{ article.image | image_url: width: 1200 | json }},
+        "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+        "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+        "author": {
+          "@type": "Person",
+          "name": {{ article.author | json }}
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ shop.name | json }}
+        },
+        "description": {{ article_desc | json }}
+      }
+      </script>
+    {%- endif -%}
+
+    {%- if template.name == 'collection' and collection != blank -%}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": {{ collection.title | json }},
+        "url": {{ canonical_url | json }},
+        "description": {{ collection.description | strip_html | truncate: 500 | json }}
+      }
+      </script>
+    {%- endif -%}
+
+    {%- if template.name == 'blog' and blog != blank -%}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": {{ blog.title | json }},
+        "url": {{ canonical_url | json }},
+        "description": {{ blog.metafields.custom.description | default: blog.title | json }}
+      }
+      </script>
+    {%- endif -%}
+
+    {%- if template.name == 'page' and page != blank -%}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": {{ page.title | json }},
+        "url": {{ canonical_url | json }}
+      }
+      </script>
+    {%- endif -%}
+
+    {%- if template.name == 'index' -%}
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": {{ shop.name | json }},
+        "url": {{ shop.url | default: request.origin | json }}
+      }
+      </script>
+    {%- endif -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+  </head>
+
+  <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.name | handle }}-{{ template.suffix }}{% endif %}">
+    <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+
+    {%- if settings.show_announcement -%}
+      {% section 'announcement-bar' %}
+    {%- endif -%}
+    {% section 'header' %}
+
+    <main id="MainContent" class="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+
+    <div class="overlay" id="overlay"></div>
+
+    {%- if settings.enable_cart_drawer -%}
+      {% render 'cart-drawer' %}
+    {%- endif -%}
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+
+    <script>
+      window.thebeltco = {
+        routes: {
+          cart: '{{ routes.cart_url }}',
+          cartAdd: '{{ routes.cart_add_url }}',
+          cartChange: '{{ routes.cart_change_url }}',
+          cartClear: '{{ routes.cart_clear_url }}',
+          predictiveSearch: '{{ routes.predictive_search_url }}'
+        },
+        settings: {
+          cartDrawer: {{ settings.enable_cart_drawer | json }}
+        },
+        strings: {
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          unavailable: {{ 'products.product.unavailable' | t | json }},
+          itemAdded: {{ 'products.product.item_added' | t | json }},
+          cartError: {{ 'cart.general.error' | t | json }}
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+{%- if template.name == 'product' and product != blank -%}
+{%- liquid
+  assign canonical = canonical_url | default: (shop.url | default: request.origin | append: product.url)
+
+  assign description = product.description | strip_html | truncate: 500
+  assign images = product.images | map: 'src' | json
+
+  assign sku = product.sku | default: product.variants.first.sku
+  assign mpn = product.id | append: ''
+
+  assign vendor = product.vendor
+  if vendor == blank
+    assign vendor = shop.name
+  endif
+
+  assign has_color = false
+  assign color_value = ''
+  if product.metafields.custom.color != blank
+    assign has_color = true
+    assign color_value = product.metafields.custom.color
+  endif
+
+  assign has_material = false
+  assign material_value = ''
+  if product.metafields.custom.material != blank
+    assign has_material = true
+    assign material_value = product.metafields.custom.material
+  endif
+
+  assign has_buckle_material = false
+  assign buckle_material_value = ''
+  if product.metafields.custom.buckle_material != blank
+    assign has_buckle_material = true
+    assign buckle_material_value = product.metafields.custom.buckle_material
+  endif
+
+  assign has_country = false
+  assign country_value = ''
+  if product.metafields.custom.country_of_origin != blank
+    assign has_country = true
+    assign country_value = product.metafields.custom.country_of_origin
+  endif
+
+  assign has_leather_type = false
+  assign leather_type_value = ''
+  if product.metafields.custom.leather_type != blank
+    assign has_leather_type = true
+    assign leather_type_value = product.metafields.custom.leather_type
+  endif
+
+  assign has_size = false
+  assign size_value = ''
+  if product.metafields.custom.belt_width != blank
+    assign has_size = true
+    assign size_value = product.metafields.custom.belt_width
+  endif
+
+  assign category = ''
+  if product.collections.first != blank
+    assign category = product.collections.first.title
+  endif
+
+  assign has_rating = false
+  assign rating_value = ''
+  assign review_count = ''
+  if product.metafields.custom.reviews_rating != blank and product.metafields.custom.reviews_count != blank
+    assign rating_value = product.metafields.custom.reviews_rating
+    assign review_count = product.metafields.custom.reviews_count
+    if rating_value > 0 and review_count > 0
+      assign has_rating = true
+    endif
+  endif
+
+  assign has_return_policy = false
+  assign return_days = 30
+  if product.metafields.custom.return_policy_days != blank
+    assign has_return_policy = true
+    assign return_days = product.metafields.custom.return_policy_days
+  endif
+
+  assign has_shipping = false
+  if product.metafields.custom.shipping_details != blank
+    assign has_shipping = true
+  endif
+
+  assign price_valid_until = 'now' | date: '%Y' | append: '-12-31'
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ description | json }},
+  "sku": {{ sku | json }},
+  "mpn": {{ mpn | json }},
+  "brand": {
+    "@type": "Brand",
+    "name": {{ vendor | json }}
+  },
+  "image": {{ images }},
+  "url": {{ canonical | json }}{% if category != blank %},
+  "category": {{ category | json }}{% endif %}{% if has_color %},
+  "color": {{ color_value | json }}{% endif %}{% if has_material %},
+  "material": {{ material_value | strip_html | json }}{% endif %}{% if has_buckle_material %},
+  "buckleMaterial": {{ buckle_material_value | json }}{% endif %}{% if has_country %},
+  "countryOfOrigin": {{ country_value | json }}{% endif %}{% if has_leather_type %},
+  "leatherType": {{ leather_type_value | json }}{% endif %}{% if has_size %},
+  "size": {{ size_value | json }}{% endif %},
+  "itemCondition": "https://schema.org/NewCondition",
+  "offers": [
+    {%- for variant in product.variants -%}
+    {
+      "@type": "Offer",
+      "url": {{ canonical | append: '?variant=' | append: variant.id | json }},
+      "priceCurrency": "ZAR",
+      "price": {{ variant.price | divided_by: 100.0 | json }},
+      "priceValidUntil": {{ price_valid_until | json }},
+      "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "sku": {{ variant.sku | default: variant.id | json }},
+      "name": {{ variant.title | json }}{% if has_return_policy %},
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "ZA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": {{ return_days | json }},
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }{% endif %}{% if has_shipping %},
+      "shippingDetails": {{ product.metafields.custom.shipping_details | json }}{% endif %}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]{% if has_rating %},
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ rating_value | json }},
+    "reviewCount": {{ review_count | json }},
+    "bestRating": "5",
+    "worstRating": "1"
+  }{% endif %}
+}
+</script>
+{%- endif -%}

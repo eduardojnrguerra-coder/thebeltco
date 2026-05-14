@@ -1,0 +1,18 @@
+<section class="main-page">
+  <div class="page-width">
+    {% render 'breadcrumb' %}
+    <h1 class="main-page__title">{{ page.title }}</h1>
+    <div class="main-page__content rte">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main page",
+  "tag": "section",
+  "class": "section section--main-page",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+<div class="announcement-bar" role="region" aria-label="Announcement">
+  <div class="page-width">
+    {%- if settings.announcement_link != blank -%}
+      <a href="{{ settings.announcement_link }}" class="announcement-bar__link">
+        <span class="announcement-bar__text">{{ settings.announcement_text }}</span>
+      </a>
+    {%- else -%}
+      <span class="announcement-bar__text">{{ settings.announcement_text }}</span>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Announcement bar"
+    }
+  ]
+}
+{% endschema %}

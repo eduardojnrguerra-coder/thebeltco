@@ -1,0 +1,36 @@
+<section class="leather-care">
+  <div class="page-width">
+    <div class="leather-care__card">
+      {% render 'icon', name: 'heart', size: 36, classes: 'leather-care__icon' %}
+      <h2 class="leather-care__heading">{{ section.settings.heading }}</h2>
+      <div class="leather-care__text">{{ section.settings.text }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Leather care",
+  "tag": "section",
+  "class": "section section--leather-care",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Leather Care"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "To keep your belt looking its best, avoid prolonged exposure to water and direct sunlight. Clean with a damp cloth and condition with leather balm every few months."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Leather care"
+    }
+  ]
+}
+{% endschema %}

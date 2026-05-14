@@ -1,0 +1,572 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "TheBeltCo",
+    "theme_version": "1.0.0",
+    "theme_author": "TheBeltCo",
+    "theme_documentation_url": "https://thebeltco.com/pages/support",
+    "theme_support_url": "https://thebeltco.com/pages/support"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Brand Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (Leather Brown)",
+        "default": "#8B5E3C"
+      },
+      {
+        "type": "color",
+        "id": "color_primary_dark",
+        "label": "Primary Dark",
+        "default": "#6B4226"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary",
+        "default": "#C4956A"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#D4A574"
+      },
+      {
+        "type": "header",
+        "content": "Background Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#FAF6F1"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_alt",
+        "label": "Alternate Background",
+        "default": "#F0E8DE"
+      },
+      {
+        "type": "header",
+        "content": "Text Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2C1810"
+      },
+      {
+        "type": "color",
+        "id": "color_text_light",
+        "label": "Text (Light)",
+        "default": "#6B5B4E"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#D4C5B5"
+      },
+      {
+        "type": "header",
+        "content": "Notification Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_success",
+        "label": "Success",
+        "default": "#2D6A4F"
+      },
+      {
+        "type": "color",
+        "id": "color_error",
+        "label": "Error",
+        "default": "#A04040"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Sale",
+        "default": "#A04040"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button Text",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Font Settings"
+      },
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "options": [
+          { "value": "georgia", "label": "Georgia (Serif)" },
+          { "value": "times", "label": "Times New Roman (Serif)" },
+          { "value": "playfair", "label": "Playfair Display (Serif)" },
+          { "value": "lora", "label": "Lora (Serif)" }
+        ],
+        "default": "georgia"
+      },
+      {
+        "type": "select",
+        "id": "body_font",
+        "label": "Body Font",
+        "options": [
+          { "value": "system", "label": "System Font Stack" },
+          { "value": "inter", "label": "Inter (Sans-Serif)" },
+          { "value": "roboto", "label": "Roboto (Sans-Serif)" },
+          { "value": "lato", "label": "Lato (Sans-Serif)" }
+        ],
+        "default": "system"
+      },
+      {
+        "type": "range",
+        "id": "base_font_size",
+        "label": "Base Font Size",
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "default": 16,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "heading_scale",
+        "label": "Heading Scale",
+        "min": 100,
+        "max": 150,
+        "step": 5,
+        "default": 125,
+        "unit": "%"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Announcement Bar"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Announcement text",
+        "default": "Free delivery on orders over R500"
+      },
+      {
+        "type": "url",
+        "id": "announcement_link",
+        "label": "Announcement link"
+      },
+      {
+        "type": "header",
+        "content": "Header Layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show search",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "label": "Logo width",
+        "min": 80,
+        "max": 300,
+        "step": 10,
+        "default": 160,
+        "unit": "px"
+      },
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo text (fallback)",
+        "default": "TheBeltCo"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Footer Content"
+      },
+      {
+        "type": "text",
+        "id": "footer_about_text",
+        "label": "About text",
+        "default": "Premium leather belts handcrafted in South Africa. Built for work, weekends, and years of use."
+      },
+      {
+        "type": "link_list",
+        "id": "footer_menu",
+        "label": "Footer menu",
+        "default": "footer"
+      },
+      {
+        "type": "header",
+        "content": "Social Media"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      },
+      {
+        "type": "header",
+        "content": "Payment Icons"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_newsletter",
+        "label": "Show newsletter signup",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "newsletter_heading",
+        "label": "Newsletter heading",
+        "default": "Join the Club"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_text",
+        "label": "Newsletter text",
+        "default": "Subscribe for exclusive offers, leather care tips, and new arrivals."
+      }
+    ]
+  },
+  {
+    "name": "Product Pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product Gallery"
+      },
+      {
+        "type": "select",
+        "id": "gallery_style",
+        "label": "Gallery style",
+        "options": [
+          { "value": "stacked", "label": "Stacked" },
+          { "value": "thumbnails", "label": "Thumbnails" },
+          { "value": "slideshow", "label": "Slideshow" }
+        ],
+        "default": "thumbnails"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable image zoom",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Product Form"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_variant_labels",
+        "label": "Show variant labels",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sku",
+        "label": "Show SKU",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show quantity selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_pickup_availability",
+        "label": "Show pickup availability",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Delivery & Returns"
+      },
+      {
+        "type": "text",
+        "id": "delivery_text",
+        "label": "Delivery text",
+        "default": "Free delivery on orders over R500"
+      },
+      {
+        "type": "text",
+        "id": "returns_text",
+        "label": "Returns text",
+        "default": "30-day easy returns"
+      },
+      {
+        "type": "header",
+        "content": "Related Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_related",
+        "label": "Show related products",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "related_heading",
+        "label": "Related products heading",
+        "default": "Complete the Look"
+      },
+      {
+        "type": "range",
+        "id": "related_limit",
+        "label": "Related products limit",
+        "min": 4,
+        "max": 12,
+        "step": 1,
+        "default": 4
+      }
+    ]
+  },
+  {
+    "name": "Collection Pages",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "grid_columns",
+        "label": "Products per row (desktop)",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ],
+        "default": "3"
+      },
+      {
+        "type": "select",
+        "id": "mobile_grid_columns",
+        "label": "Products per row (mobile)",
+        "options": [
+          { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" }
+        ],
+        "default": "2"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sorting",
+        "label": "Show sorting",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_filters",
+        "label": "Show filters",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "label": "Show collection image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_count",
+        "label": "Show product count",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cart Page"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_notes",
+        "label": "Show cart notes",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_shipping_calculator",
+        "label": "Show shipping calculator",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Cart Drawer"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_cart_drawer",
+        "label": "Enable cart drawer",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cart_heading",
+        "label": "Cart heading",
+        "default": "Your Cart"
+      }
+    ]
+  },
+  {
+    "name": "SEO",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Default Meta"
+      },
+      {
+        "type": "text",
+        "id": "meta_title",
+        "label": "Default page title",
+        "default": "TheBeltCo – Premium Leather Belts | South Africa"
+      },
+      {
+        "type": "textarea",
+        "id": "meta_description",
+        "label": "Default meta description",
+        "default": "Premium leather belts handcrafted in South Africa. Durable, timeless belts for work, weekends, and years of use. Shop full-grain leather belts made for everyday wear."
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Social share image"
+      },
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Links"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube"
+      }
+    ]
+  },
+  {
+    "name": "Contact",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Contact Information"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Customer service email",
+        "info": "Used in Organization structured data"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "Customer service phone",
+        "info": "Used in Organization structured data"
+      }
+    ]
+  }
+]

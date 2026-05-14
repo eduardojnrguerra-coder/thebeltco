@@ -1,0 +1,92 @@
+<section class="collection-links">
+  {%- if section.blocks.size > 0 -%}
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-header__title">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="collection-links__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.url != blank -%}
+        <a href="{{ block.settings.url }}" class="collection-links__item" {{ block.shopify_attributes }}>
+          <span class="collection-links__label">{{ block.settings.label }}</span>
+        </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Curated links",
+  "tag": "section",
+  "class": "section section--collection-links",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Helpful Resources"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Belt Size Guide"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curated links",
+      "settings": {
+        "heading": "Helpful Resources"
+      },
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "label": "Belt Size Guide",
+            "url": ""
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Leather Care Guide",
+            "url": ""
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Genuine Leather Belts",
+            "url": ""
+          }
+        },
+        {
+          "type": "link",
+          "settings": {
+            "label": "Men's Leather Belts",
+            "url": ""
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

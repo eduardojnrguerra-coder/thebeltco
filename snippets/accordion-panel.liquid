@@ -1,0 +1,20 @@
+{%- liquid
+  assign heading = heading | default: ''
+  assign content = content | default: ''
+  assign open = open | default: false
+  assign id = id | default: heading | handle
+-%}
+
+{%- if heading != blank and content != blank -%}
+  <div class="accordion-panel" data-accordion>
+    <button class="accordion-panel__trigger" aria-expanded="{{ open }}" aria-controls="accordion-{{ id }}" data-accordion-trigger>
+      <span class="accordion-panel__heading">{{ heading }}</span>
+      {% render 'icon', name: 'chevron-down', size: 20, classes: 'accordion-panel__icon' %}
+    </button>
+    <div class="accordion-panel__content" id="accordion-{{ id }}" role="region"{% unless open %} hidden{% endunless %} data-accordion-content>
+      <div class="accordion-panel__inner">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+{%- endif -%}

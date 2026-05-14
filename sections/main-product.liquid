@@ -1,0 +1,311 @@
+<section class="main-product" data-product-section>
+  <div class="page-width">
+    {% render 'breadcrumb' %}
+
+    <div class="main-product__grid">
+      <div class="main-product__gallery">
+        <div class="product-gallery" data-product-gallery>
+          <div class="product-gallery__main">
+            {%- for media in product.media -%}
+              <div class="product-gallery__slide{% if forloop.first %} product-gallery__slide--active{% endif %}" data-media-id="{{ media.id }}">
+                {%- case media.media_type -%}
+                  {%- when 'image' -%}
+                    {%- assign gallery_alt = media.alt | escape -%}
+                    {%- assign zoom_url = media | image_url: width: 2000 -%}
+                    {{ media | image_url: width: 1000 | image_tag: class: 'product-gallery__image', widths: '500,800,1000', sizes: '(max-width: 767px) 100vw, 50vw', alt: gallery_alt, loading: 'eager', fetchpriority: 'high', data-zoom: zoom_url, width: media.width, height: media.height }}
+                  {%- when 'video' -%}
+                    {{ media | video_tag: class: 'product-gallery__video', controls: true, loading: 'lazy' }}
+                  {%- when 'external_video' -%}
+                    {{ media | external_video_tag: class: 'product-gallery__external-video', loading: 'lazy' }}
+                  {%- when 'model' -%}
+                    {{ media | model_viewer_tag: class: 'product-gallery__model', loading: 'lazy' }}
+                {%- endcase -%}
+              </div>
+            {%- else -%}
+              <div class="product-gallery__slide product-gallery__slide--active">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {%- endfor -%}
+          </div>
+
+          {%- if product.media.size > 1 -%}
+            <div class="product-gallery__thumbs" data-product-thumbs>
+              {%- for media in product.media -%}
+                <button class="product-gallery__thumb{% if forloop.first %} product-gallery__thumb--active{% endif %}" data-thumb-id="{{ media.id }}" aria-label="{{ media.alt | escape }}">
+                  {%- assign thumb_alt = media.alt | escape -%}{{ media | image_url: width: 120 | image_tag: class: 'product-gallery__thumb-image', widths: '60,120', loading: 'lazy', alt: thumb_alt, width: 120, height: 120 }}
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="main-product__info">
+        {%- liquid
+          assign leather_type = product.metafields.custom.leather_type
+          assign belt_width = product.metafields.custom.belt_width
+          assign country_of_origin = product.metafields.custom.country_of_origin
+          assign product_highlights = product.metafields.custom.product_highlights
+          assign ideal_for = product.metafields.custom.ideal_for
+          assign material_mf = product.metafields.custom.material
+          assign care_instructions = product.metafields.custom.care_instructions
+          assign size_guide_note = product.metafields.custom.size_guide_note
+          assign delivery_note = product.metafields.custom.delivery_note
+          assign return_note = product.metafields.custom.return_note
+        -%}
+
+        <div class="product-info">
+          <div class="product-info__badges">
+            {%- if leather_type != blank -%}
+              {% render 'badge', text: leather_type, variant: 'leather', icon: 'leaf' %}
+            {%- endif -%}
+            {%- if belt_width != blank -%}
+              {% render 'badge', text: belt_width, variant: 'default', icon: 'ruler' %}
+            {%- endif -%}
+            {%- if country_of_origin != blank -%}
+              {% render 'badge', text: country_of_origin, variant: 'default', icon: 'map-pin' %}
+            {%- endif -%}
+          </div>
+
+          <h1 class="product-info__title">{{ product.title }}</h1>
+
+          <div class="product-info__price" data-product-price>
+            <span class="product-info__price-current">
+              {{ product.price | money }}
+            </span>
+            {%- if product.compare_at_price > product.price -%}
+              <span class="product-info__price-compare">{{ product.compare_at_price | money }}</span>
+              <span class="product-info__badge-sale">{{ 'products.card.on_sale' | t }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- if settings.show_sku and product.sku != blank -%}
+            <p class="product-info__sku">{{ 'products.product.sku' | t }}: {{ product.sku }}</p>
+          {%- endif -%}
+
+          {%- if product_highlights != blank -%}
+            {%- assign highlights_list = product_highlights | newline_to_br | strip_newlines | split: '<br />' -%}
+            {%- if highlights_list.size == 1 and highlights_list.first contains ',' -%}
+              {%- assign highlights_list = product_highlights | split: ',' -%}
+            {%- endif -%}
+            <ul class="product-info__highlights">
+              {%- for highlight in highlights_list -%}
+                {%- assign h = highlight | strip -%}
+                {%- if h != blank -%}
+                  <li>{% render 'icon', name: 'check', size: 14 %} {{ h }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          {%- if ideal_for != blank -%}
+            {%- assign ideal_tags = ideal_for | split: ',' -%}
+            <div class="product-info__ideal-for">
+              <span class="product-info__ideal-for-label">{{ 'products.product.ideal_for' | t }}:</span>
+              {%- for tag in ideal_tags -%}
+                {%- assign t = tag | strip -%}
+                {%- if t != blank -%}
+                  <span class="product-info__ideal-tag">{{ t }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+
+          <div class="product-info__availability">
+            {%- if product.available -%}
+              {%- if product.inventory_management == 'shopify' and product.inventory_policy == 'deny' and product.inventory_quantity <= 5 and product.inventory_quantity > 0 -%}
+                <span class="product-info__stock product-info__stock--low">
+                  {{ 'products.product.low_stock' | t: count: product.inventory_quantity }}
+                </span>
+              {%- else -%}
+                <span class="product-info__stock product-info__stock--in">
+                  {% render 'icon', name: 'check', size: 16 %}
+                  {{ 'products.product.in_stock' | t }}
+                </span>
+              {%- endif -%}
+            {%- else -%}
+              <span class="product-info__stock product-info__stock--out">
+                {{ 'products.product.out_of_stock' | t }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          {% form 'product', product, class: 'product-info__form' %}
+            {%- unless product.has_only_default_variant -%}
+              <div class="product-info__variants">
+                {%- for option in product.options_with_values -%}
+                  <div class="product-info__variant-group">
+                    {%- if settings.show_variant_labels -%}
+                      <label class="product-info__variant-label">{{ option.name }}</label>
+                    {%- endif -%}
+                    <div class="product-info__variant-options">
+                      {%- for value in option.values -%}
+                        <label class="product-info__variant-option">
+                          <input
+                            type="radio"
+                            name="options[{{ option.name | escape }}]"
+                            value="{{ value | escape }}"
+                            {% if option.selected_value == value %}checked{% endif %}
+                            data-option-input
+                          >
+                          <span class="product-info__variant-swatch">{{ value }}</span>
+                        </label>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endunless -%}
+
+            <select name="id" class="product-info__variant-select" data-variant-select>
+              {%- for variant in product.variants -%}
+                <option
+                  value="{{ variant.id }}"
+                  {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+                  {% unless variant.available %}disabled{% endunless %}
+                  data-price="{{ variant.price | money }}"
+                  data-compare="{{ variant.compare_at_price | money }}"
+                >
+                  {{ variant.title }}
+                  {%- unless variant.available %} - {{ 'products.product.sold_out' | t }}{% endunless -%}
+                </option>
+              {%- endfor -%}
+            </select>
+
+            {%- if settings.show_quantity_selector -%}
+              <div class="product-info__quantity">
+                <label class="product-info__quantity-label">{{ 'products.product.quantity' | t }}</label>
+                <div class="quantity-selector" data-quantity-selector>
+                  <button class="quantity-selector__btn" type="button" data-quantity-minus aria-label="Decrease quantity">
+                    {% render 'icon', name: 'minus', size: 16 %}
+                  </button>
+                  <input
+                    class="quantity-selector__input"
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    data-quantity-input
+                  >
+                  <button class="quantity-selector__btn" type="button" data-quantity-plus aria-label="Increase quantity">
+                    {% render 'icon', name: 'plus', size: 16 %}
+                  </button>
+                </div>
+              </div>
+            {%- endif -%}
+
+            <button
+              class="btn btn--primary btn--lg product-info__add-btn"
+              type="submit"
+              name="add"
+              data-add-to-cart
+              {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+            >
+              {%- if product.selected_or_first_available_variant.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- endif -%}
+            </button>
+
+            {% render 'trust-line' %}
+          {% endform %}
+
+          <div class="product-info__accordions">
+            {%- assign material_text = material_mf | default: section.settings.material_default -%}
+            {%- if material_text != blank -%}
+              {% render 'accordion-panel', heading: 'sections.materials.heading' | t, content: material_text, open: false, id: 'materials' %}
+            {%- endif -%}
+
+            {%- assign care_text = care_instructions | default: section.settings.care_default -%}
+            {%- if care_text != blank -%}
+              {% render 'accordion-panel', heading: 'sections.leather_care.heading' | t, content: care_text, open: false, id: 'leather-care' %}
+            {%- endif -%}
+
+            {%- assign sg_text = size_guide_note | default: '' -%}
+            {%- if sg_text == blank and section.settings.size_guide_page != blank -%}
+              {%- assign sg_page = pages[section.settings.size_guide_page] -%}
+              {%- assign sg_text = sg_page.content -%}
+            {%- endif -%}
+            {%- if sg_text != blank -%}
+              {% render 'accordion-panel', heading: 'sections.size_guide.heading' | t, content: sg_text, open: false, id: 'size-guide' %}
+            {%- endif -%}
+
+            {%- assign delivery_text = delivery_note | default: section.settings.delivery_default -%}
+            {%- assign returns_text = return_note | default: section.settings.returns_default -%}
+            {%- if delivery_text != blank or returns_text != blank -%}
+              {%- capture dr_content -%}
+                {%- if delivery_text != blank -%}
+                  {% render 'icon', name: 'truck', size: 18 %} {{ delivery_text }}<br><br>
+                {%- endif -%}
+                {%- if returns_text != blank -%}
+                  {% render 'icon', name: 'undo', size: 18 %} {{ returns_text }}
+                {%- endif -%}
+              {%- endcapture -%}
+              {%- assign dr_heading = 'sections.delivery_returns.heading' | t -%}
+              {% render 'accordion-panel', heading: dr_heading, content: dr_content, open: true, id: 'delivery-returns' %}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%- if product.description != blank -%}
+      <div class="main-product__description">
+        <h2 class="main-product__description-heading">{{ 'products.product.description' | t }}</h2>
+        <div class="main-product__description-content rte">
+          {{ product.description }}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% render 'sticky-atc' %}
+
+{% schema %}
+{
+  "name": "Main product",
+  "tag": "section",
+  "class": "section section--main-product",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Size Guide"
+    },
+    {
+      "type": "page",
+      "id": "size_guide_page",
+      "label": "Size guide page (fallback)"
+    },
+    {
+      "type": "header",
+      "content": "Default content (fallback when metafields are empty)"
+    },
+    {
+      "type": "textarea",
+      "id": "material_default",
+      "label": "Materials default text",
+      "default": "Crafted from premium full-grain leather with a durable nickel-free buckle. Our leather is ethically sourced and hand-finished."
+    },
+    {
+      "type": "textarea",
+      "id": "care_default",
+      "label": "Leather care default text",
+      "default": "To keep your belt looking its best, avoid prolonged exposure to water and direct sunlight. Clean with a damp cloth and condition with leather balm every few months."
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_default",
+      "label": "Delivery default text",
+      "default": "Free delivery on orders over R500. Orders dispatched within 1-2 business days."
+    },
+    {
+      "type": "textarea",
+      "id": "returns_default",
+      "label": "Returns default text",
+      "default": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt for a full refund."
+    }
+  ]
+}
+{% endschema %}

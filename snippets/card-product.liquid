@@ -1,0 +1,87 @@
+{%- liquid
+  assign product_card_product = product
+  assign show_quick_add = show_quick_add | default: false
+  assign show_badges = show_badges | default: true
+-%}
+
+<div class="product-card">
+  <div class="product-card__image-wrapper">
+    <a href="{{ product_card_product.url | within: collection }}" class="product-card__link" tabindex="-1">
+      {%- if product_card_product.featured_media -%}
+        {%- assign media = product_card_product.featured_media -%}
+        <div class="product-card__image product-card__image--primary" style="aspect-ratio: {{ media.aspect_ratio | default: 1 }}">
+          {%- assign card_alt = media.alt | escape -%}
+          {{ media | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,400,600', sizes: '(max-width: 767px) 50vw, 33vw', alt: card_alt, width: media.width, height: media.height }}
+        </div>
+        {%- if product_card_product.media[1] != blank -%}
+          <div class="product-card__image product-card__image--secondary" style="aspect-ratio: {{ product_card_product.media[1].aspect_ratio | default: 1 }}">
+            {%- assign card_alt_2 = product_card_product.media[1].alt | escape -%}
+            {{ product_card_product.media[1] | image_url: width: 600 | image_tag: loading: 'lazy', widths: '300,400,600', sizes: '(max-width: 767px) 50vw, 33vw', alt: card_alt_2, width: product_card_product.media[1].width, height: product_card_product.media[1].height }}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="product-card__image product-card__image--placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    </a>
+
+    {%- if show_badges -%}
+      <div class="product-card__badges">
+        {%- if product_card_product.compare_at_price > product_card_product.price -%}
+          {% render 'badge', text: 'products.card.on_sale' | t, variant: 'sale' %}
+        {%- endif -%}
+        {%- if product_card_product.tags contains 'best-seller' or product_card_product.tags contains 'best_seller' -%}
+          {% render 'badge', text: 'products.card.best_seller' | t, variant: 'default' %}
+        {%- endif -%}
+        {%- if product_card_product.tags contains 'new' -%}
+          {% render 'badge', text: 'products.card.new' | t, variant: 'new' %}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if show_quick_add and product_card_product.available -%}
+      <div class="product-card__quick-add">
+        {%- if product_card_product.has_only_default_variant -%}
+          <button class="btn btn--sm btn--outline product-card__quick-add-btn" data-quick-add="{{ product_card_product.variants.first.id }}">
+            {{ 'products.card.quick_add' | t }}
+          </button>
+        {%- else -%}
+          <a href="{{ product_card_product.url }}" class="btn btn--sm btn--outline product-card__quick-add-btn">
+            {{ 'products.product.select_variant' | t }}
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title">
+      <a href="{{ product_card_product.url | within: collection }}">
+        {{ product_card_product.title }}
+      </a>
+    </h3>
+
+    {%- liquid
+      assign price = product_card_product.price | money
+      if product_card_product.compare_at_price > product_card_product.price
+        assign compare_at_price = product_card_product.compare_at_price | money
+      endif
+    -%}
+
+    <div class="product-card__price">
+      <span class="product-card__price-current">
+        {%- if product_card_product.price_varies -%}
+          {{ 'products.product.from' | t }} {{ price }}
+        {%- else -%}
+          {{ price }}
+        {%- endif -%}
+      </span>
+      {%- if compare_at_price -%}
+        <span class="product-card__price-compare">{{ compare_at_price }}</span>
+      {%- endif -%}
+    </div>
+
+    <span class="product-card__vendor">{{ product_card_product.vendor }}</span>
+  </div>
+</div>

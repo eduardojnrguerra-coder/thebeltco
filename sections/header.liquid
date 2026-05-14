@@ -1,0 +1,119 @@
+<header class="header" data-header{% if settings.sticky_header %} data-header-sticky{% endif %}>
+  <div class="page-width header__inner">
+    <button class="header__menu-toggle" data-mobile-menu-toggle aria-label="{{ 'accessibility.menu' | t }}" aria-expanded="false">
+      {% render 'icon', name: 'menu', size: 24 %}
+      {% render 'icon', name: 'close', size: 24, classes: 'header__menu-close-icon' %}
+    </button>
+
+    <div class="header__logo">
+      {%- if settings.logo != blank -%}
+        <a href="{{ routes.root_url }}" class="header__logo-link">
+          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', widths: '160,240,300', alt: shop.name, width: settings.logo_width }}
+        </a>
+      {%- else -%}
+        <a href="{{ routes.root_url }}" class="header__logo-text">{{ settings.logo_text | default: shop.name }}</a>
+      {%- endif -%}
+    </div>
+
+    <nav class="header__nav" data-header-nav role="navigation" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {%- for link in linklists['main-menu'].links -%}
+          <li class="header__nav-item{% if link.links != blank %} header__nav-item--has-submenu{% endif %}">
+            <a href="{{ link.url }}" class="header__nav-link{% if link.active %} header__nav-link--active{% endif %}">
+              {{ link.title }}
+            </a>
+            {%- if link.links != blank -%}
+              <ul class="header__submenu">
+                {%- for sub_link in link.links -%}
+                  <li class="header__submenu-item">
+                    <a href="{{ sub_link.url }}" class="header__submenu-link">{{ sub_link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      {%- if settings.show_search -%}
+        <button class="header__action-btn" data-search-toggle aria-label="{{ 'accessibility.search' | t }}">
+          {% render 'icon', name: 'search', size: 22 %}
+        </button>
+      {%- endif -%}
+
+      <a href="{{ routes.account_url }}" class="header__action-btn" aria-label="{{ 'accessibility.user' | t }}">
+        {% render 'icon', name: 'user', size: 22 %}
+      </a>
+
+      <button class="header__action-btn header__cart-btn" data-cart-toggle aria-label="{{ 'accessibility.cart' | t }}">
+        {% render 'icon', name: 'cart', size: 22 %}
+        <span class="header__cart-count" data-cart-count>
+          {%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header__mobile-menu" data-mobile-menu role="dialog" aria-modal="true" aria-label="Navigation">
+    <nav class="header__mobile-nav">
+      <ul class="header__mobile-nav-list">
+        {%- for link in linklists['main-menu'].links -%}
+          <li class="header__mobile-nav-item{% if link.links != blank %} header__mobile-nav-item--has-submenu{% endif %}">
+            <a href="{{ link.url }}" class="header__mobile-nav-link">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="header__mobile-submenu">
+                {%- for sub_link in link.links -%}
+                  <li class="header__mobile-submenu-item">
+                    <a href="{{ sub_link.url }}" class="header__mobile-submenu-link">{{ sub_link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="header-search" data-header-search role="dialog" aria-modal="true" aria-label="Search">
+  <div class="page-width">
+    <form action="{{ routes.search_url }}" method="get" class="header-search__form" role="search">
+      <input type="hidden" name="type" value="product">
+      <div class="header-search__input-wrapper">
+        {% render 'icon', name: 'search', size: 22, classes: 'header-search__icon' %}
+        <input
+          class="header-search__input"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'search.general.placeholder' | t }}"
+          autocomplete="off"
+          data-search-input
+        >
+        <button class="header-search__close" data-search-close type="button" aria-label="{{ 'accessibility.close' | t }}">
+          {% render 'icon', name: 'close', size: 20 %}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header settings"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

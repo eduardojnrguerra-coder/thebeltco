@@ -1,0 +1,238 @@
+{
+  "general": {
+    "shop": {
+      "title": "Home",
+      "description": "Premium leather belts handcrafted in South Africa"
+    },
+    "404": {
+      "text": "The page you're looking for doesn't exist or has been moved.",
+      "link": "Back to Home"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "menu": "Menu",
+    "search": "Search",
+    "cart": "Cart",
+    "share": "Share",
+    "user": "Account"
+  },
+  "homepage": {
+    "hero": {
+      "heading": "Premium Leather Belts Made for Everyday Wear",
+      "subheading": "Durable, timeless belts crafted for work, weekends, and years of use.",
+      "primary_cta": "Shop Belts",
+      "secondary_cta": "View Best Sellers"
+    },
+    "trust_badges": {
+      "genuine_leather": "Genuine Leather",
+      "secure_checkout": "Secure Checkout",
+      "sa_store": "South African Store",
+      "easy_returns": "Easy Returns"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "item_added": "Item added to cart",
+      "select_variant": "Select options",
+      "quantity": "Quantity",
+      "price": "Price",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "sku": "SKU",
+      "in_stock": "In stock",
+      "out_of_stock": "Out of stock",
+      "low_stock": "Only {{ count }} left",
+      "view_full_details": "View full details",
+      "description": "Description",
+      "from": "From",
+    "ideal_for": "Ideal for"
+    },
+    "card": {
+      "quick_add": "Quick Add",
+      "quick_view": "Quick View",
+      "sold_out": "Sold Out",
+      "on_sale": "Sale",
+      "new": "New",
+      "best_seller": "Best Seller",
+      "genuine_leather": "Genuine Leather"
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Collections",
+      "products": "Products",
+      "view_all": "View all",
+      "sort": "Sort",
+      "filter": "Filter",
+      "no_products": "No products found",
+      "no_filters": "No filters available",
+      "of": "of",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "sort": {
+      "best_selling": "Best Selling",
+      "title_asc": "Alphabetically: A-Z",
+      "title_desc": "Alphabetically: Z-A",
+      "price_asc": "Price: Low to High",
+      "price_desc": "Price: High to Low",
+      "created_desc": "Newest",
+      "created_asc": "Oldest"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Cart",
+      "empty": "Your cart is empty",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "note": "Order note",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue shopping",
+      "error": "Something went wrong. Please try again.",
+      "remove": "Remove",
+      "update": "Update",
+      "free_shipping": "Free shipping",
+      "shipping_at_checkout": "Shipping calculated at checkout"
+    },
+    "drawer": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "continue": "Continue Shopping"
+    }
+  },
+  "search": {
+    "general": {
+      "title": "Search",
+      "placeholder": "Search our store...",
+      "no_results": "No results found for \"{{ terms }}\"",
+      "results_count": "{{ count }} results found",
+      "view_all": "View all results"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "order_history": "Order History",
+      "details": "Account Details",
+      "view_addresses": "View Addresses",
+      "log_out": "Log Out"
+    },
+    "orders": {
+      "title": "Order",
+      "order_number": "Order",
+      "date": "Date",
+      "payment_status": "Payment",
+      "fulfillment_status": "Fulfillment",
+      "total": "Total",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Qty",
+      "none": "You haven't placed any orders yet.",
+      "return": "Back to Account"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "add_new": "Add New Address",
+      "edit": "Edit",
+      "delete": "Delete",
+      "return": "Back to Account"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign In",
+      "create_account": "Create Account",
+      "forgot_password": "Forgot your password?"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account",
+      "sign_in": "Already have an account? Sign In"
+    }
+  },
+  "blog": {
+    "general": {
+      "no_articles": "No articles found."
+    }
+  },
+  "footer": {
+    "about": "About",
+    "quick_links": "Quick Links",
+    "follow_us": "Follow Us",
+    "newsletter": "Newsletter",
+    "copyright": "&copy; {{ year }} {{ shop_name }}. All rights reserved.",
+    "payment": "We accept"
+  },
+  "sections": {
+    "featured_collection": {
+      "heading": "Shop Our Collection",
+      "cta": "View All"
+    },
+    "best_sellers": {
+      "heading": "Best Sellers"
+    },
+    "brand_story": {
+      "heading": "Handcrafted in South Africa",
+      "text": "Every belt is crafted from premium full-grain leather, selected for its natural grain and durability. We work with skilled artisans who take pride in creating belts built for work, weekends, and years of use.",
+      "cta": "Our Story"
+    },
+    "size_guide": {
+      "heading": "Find Your Size",
+      "text": "Not sure which size to order? Our simple size guide will help you get the perfect fit.",
+      "cta": "Size Guide"
+    },
+    "testimonials": {
+      "heading": "What Our Customers Say"
+    },
+    "faq": {
+      "heading": "Frequently Asked Questions"
+    },
+    "final_cta": {
+      "heading": "Ready for a Belt That Lasts?",
+      "text": "Join thousands of South Africans who choose quality leather. Free delivery on orders over R500.",
+      "cta": "Shop Now"
+    },
+    "newsletter": {
+      "heading": "Stay in the Loop",
+      "text": "Subscribe for new arrivals, leather care tips, and exclusive offers.",
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "success": "Thanks for subscribing!",
+      "error": "Please enter a valid email address."
+    },
+    "trust_badges": {
+      "genuine_leather": "Genuine Leather",
+      "secure_checkout": "Secure Checkout",
+      "sa_store": "South African Store",
+      "easy_returns": "Easy Returns"
+    },
+    "delivery_returns": {
+      "heading": "Delivery & Returns",
+      "delivery": "Free delivery on orders over R500. Orders dispatched within 1-2 business days.",
+      "returns": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt for a full refund."
+    },
+    "leather_care": {
+      "heading": "Leather Care",
+      "text": "To keep your belt looking its best, avoid prolonged exposure to water and direct sunlight. Clean with a damp cloth and condition with leather balm every few months."
+    },
+    "materials": {
+      "heading": "Materials",
+      "text": "Crafted from premium full-grain leather with a durable nickel-free buckle. Our leather is ethically sourced and hand-finished."
+    }
+  }
+}

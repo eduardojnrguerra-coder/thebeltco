@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Premium Leather Belts Made for Everyday Wear",
+        "subheading": "Durable, timeless belts crafted for work, weekends, and years of use.",
+        "primary_btn_label": "Shop Belts",
+        "primary_btn_link": "",
+        "secondary_btn_label": "View Best Sellers",
+        "secondary_btn_link": ""
+      }
+    },
+    "trust-badges": {
+      "type": "trust-badges",
+      "settings": {
+        "badge_1_text": "Genuine Leather",
+        "badge_2_text": "Secure Checkout",
+        "badge_3_text": "South African Store",
+        "badge_4_text": "Easy Returns"
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Shop Our Collection",
+        "subheading": "",
+        "collection": "",
+        "product_limit": 8,
+        "grid": "4",
+        "show_quick_add": true,
+        "show_view_all": true,
+        "view_all_label": "View All"
+      }
+    },
+    "best-sellers": {
+      "type": "best-sellers",
+      "settings": {
+        "heading": "Best Sellers",
+        "subheading": "",
+        "collection": "",
+        "product_limit": 4,
+        "grid": "4",
+        "show_quick_add": true
+      }
+    },
+    "brand-story": {
+      "type": "brand-story",
+      "settings": {
+        "image": "",
+        "heading": "Handcrafted in South Africa",
+        "text": "Every belt is crafted from premium full-grain leather, selected for its natural grain and durability. We work with skilled artisans who take pride in creating belts built for work, weekends, and years of use.",
+        "btn_label": "Our Story",
+        "btn_link": ""
+      }
+    },
+    "size-guide-teaser": {
+      "type": "size-guide-teaser",
+      "settings": {
+        "heading": "Find Your Size",
+        "text": "Not sure which size to order? Our simple size guide will help you get the perfect fit.",
+        "btn_label": "Size Guide",
+        "btn_link": ""
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What Our Customers Say"
+      },
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "The quality of this belt is outstanding. I've been wearing it daily for months and it still looks brand new.",
+            "author": "Thabo M.",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "Best belt I've ever owned. The leather is premium and the craftsmanship is top-notch. Highly recommended!",
+            "author": "Sarah van der Merwe",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "text": "Bought this as a gift for my husband. He absolutely loves it. The quality is incredible for the price.",
+            "author": "Priya N.",
+            "rating": 5
+          }
+        }
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "question": "How do I find my belt size?",
+            "answer": "Measure a belt you already own from the buckle edge to the hole you use most. Alternatively, measure your waist where you wear your belt and add 2 inches."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take?",
+            "answer": "We dispatch orders within 1-2 business days. Delivery takes 2-5 business days within South Africa, depending on your location."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt in its original condition for a full refund."
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "question": "Are your belts genuine leather?",
+            "answer": "Yes, all our belts are crafted from premium full-grain leather, sourced ethically and hand-finished by skilled artisans."
+          }
+        }
+      ]
+    },
+    "final-cta": {
+      "type": "final-cta",
+      "settings": {
+        "heading": "Ready for a Belt That Lasts?",
+        "text": "Join thousands of South Africans who choose quality leather. Free delivery on orders over R500.",
+        "btn_label": "Shop Now",
+        "btn_link": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust-badges",
+    "featured-collection",
+    "best-sellers",
+    "brand-story",
+    "size-guide-teaser",
+    "testimonials",
+    "faq",
+    "final-cta"
+  ]
+}

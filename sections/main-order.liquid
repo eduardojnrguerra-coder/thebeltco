@@ -1,0 +1,48 @@
+<section class="main-order">
+  <div class="page-width">
+    <h1 class="main-order__title">{{ 'customer.orders.title' | t }} #{{ order.order_number }}</h1>
+    <a href="{{ routes.account_url }}" class="btn btn--outline">{{ 'customer.orders.return' | t }}</a>
+
+    <div class="main-order__details">
+      <p>{{ 'customer.orders.date' | t }}: {{ order.created_at | date: '%b %d, %Y' }}</p>
+      <p>{{ 'customer.orders.payment_status' | t }}: {{ order.financial_status_label }}</p>
+      <p>{{ 'customer.orders.fulfillment_status' | t }}: {{ order.fulfillment_status_label }}</p>
+    </div>
+
+    <table class="main-order__items">
+      <thead>
+        <tr>
+          <th>{{ 'customer.orders.product' | t }}</th>
+          <th>{{ 'customer.orders.sku' | t }}</th>
+          <th>{{ 'customer.orders.price' | t }}</th>
+          <th>{{ 'customer.orders.quantity' | t }}</th>
+          <th>{{ 'customer.orders.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- for line_item in order.line_items -%}
+          <tr>
+            <td>{{ line_item.title }}</td>
+            <td>{{ line_item.sku }}</td>
+            <td>{{ line_item.original_price | money }}</td>
+            <td>{{ line_item.quantity }}</td>
+            <td>{{ line_item.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+      </tbody>
+    </table>
+
+    <div class="main-order__total">
+      <p>{{ 'customer.orders.total' | t }}: {{ order.total_price | money }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main order",
+  "tag": "section",
+  "class": "section section--main-order",
+  "settings": []
+}
+{% endschema %}

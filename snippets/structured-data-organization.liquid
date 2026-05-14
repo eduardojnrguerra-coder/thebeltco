@@ -1,0 +1,44 @@
+{%- liquid
+  assign shop_name = shop.name
+  assign shop_url = shop.url | default: request.origin
+  assign logo_url = settings.logo | image_url: width: 600
+  assign description = shop.description | default: settings.meta_description
+
+  assign has_social = false
+  if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_tiktok != blank or settings.social_youtube_link != blank
+    assign has_social = true
+  endif
+
+  assign has_contact = false
+  if settings.contact_email != blank or settings.contact_phone != blank
+    assign has_contact = true
+  endif
+-%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop_name | json }},
+  "url": {{ shop_url | json }},
+  "description": {{ description | json }},
+  "logo": {{ logo_url | json }}{% if has_social %},
+  "sameAs": [
+    {%- if settings.social_facebook != blank %}{{ settings.social_facebook | json }}{% endif %}
+    {%- if settings.social_instagram != blank %}{% if settings.social_facebook != blank %},{% endif %}{{ settings.social_instagram | json }}{% endif %}
+    {%- if settings.social_tiktok != blank %}{% if settings.social_facebook != blank or settings.social_instagram != blank %},{% endif %}{{ settings.social_tiktok | json }}{% endif %}
+    {%- if settings.social_youtube_link != blank %}{% if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_tiktok != blank %},{% endif %}{{ settings.social_youtube_link | json }}{% endif %}
+  ]
+  {%- endif -%}
+  {%- if has_contact %},
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": {{ settings.contact_phone | default: '' | json }},
+      "email": {{ settings.contact_email | default: '' | json }},
+      "contactType": "customer service"
+    }
+  ]
+  {%- endif -%}
+}
+</script>

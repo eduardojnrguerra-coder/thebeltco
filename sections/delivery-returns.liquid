@@ -1,0 +1,63 @@
+<section class="delivery-returns">
+  <div class="page-width">
+    <div class="delivery-returns__grid">
+      <div class="delivery-returns__block">
+        {% render 'icon', name: 'truck', size: 36, classes: 'delivery-returns__icon' %}
+        <h3 class="delivery-returns__heading">{{ section.settings.delivery_heading }}</h3>
+        <p class="delivery-returns__text">{{ section.settings.delivery_text }}</p>
+      </div>
+      <div class="delivery-returns__block">
+        {% render 'icon', name: 'undo', size: 36, classes: 'delivery-returns__icon' %}
+        <h3 class="delivery-returns__heading">{{ section.settings.returns_heading }}</h3>
+        <p class="delivery-returns__text">{{ section.settings.returns_text }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Delivery & returns",
+  "tag": "section",
+  "class": "section section--delivery-returns",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Delivery"
+    },
+    {
+      "type": "text",
+      "id": "delivery_heading",
+      "label": "Delivery heading",
+      "default": "Free Delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "delivery_text",
+      "label": "Delivery text",
+      "default": "Free delivery on orders over R500. Orders dispatched within 1-2 business days."
+    },
+    {
+      "type": "header",
+      "content": "Returns"
+    },
+    {
+      "type": "text",
+      "id": "returns_heading",
+      "label": "Returns heading",
+      "default": "Easy Returns"
+    },
+    {
+      "type": "textarea",
+      "id": "returns_text",
+      "label": "Returns text",
+      "default": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt for a full refund."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Delivery & Returns"
+    }
+  ]
+}
+{% endschema %}
