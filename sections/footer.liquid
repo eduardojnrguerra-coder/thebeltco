@@ -95,7 +95,8 @@
         {%- endif -%}
       </div>
       <div class="footer__copyright">
-        <small>{{ 'footer.copyright' | t: year: 'now' | date: '%Y', shop_name: shop.name }}</small>
+        {%- assign current_year = 'now' | date: '%Y' -%}
+        <small>{{ 'footer.copyright' | t: year: current_year, shop_name: shop.name }}</small>
       </div>
     </div>
   </div>
