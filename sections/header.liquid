@@ -8,7 +8,7 @@
     <div class="header__logo">
       {%- if settings.logo != blank -%}
         <a href="{{ routes.root_url }}" class="header__logo-link">
-          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', widths: '160,240,300', alt: shop.name, width: settings.logo_width }}
+          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', widths: '160,240,300', alt: shop.name, width: settings.logo_width, onerror: "this.style.display='none'" }}
         </a>
       {%- else -%}
         <a href="{{ routes.root_url }}" class="header__logo-text">{{ settings.logo_text | default: shop.name }}</a>
@@ -57,6 +57,11 @@
   </div>
 
   <div class="header__mobile-menu" data-mobile-menu role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="header__mobile-menu-header">
+      <button class="header__mobile-menu-close" data-menu-close aria-label="{{ 'accessibility.close' | t }}">
+        {% render 'icon', name: 'close', size: 24 %}
+      </button>
+    </div>
     <nav class="header__mobile-nav">
       <ul class="header__mobile-nav-list">
         {%- for link in linklists['main-menu'].links -%}

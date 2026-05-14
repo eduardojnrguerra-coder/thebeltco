@@ -41,14 +41,14 @@
     function open() {
       toggle.setAttribute('aria-expanded', 'true');
       menu.classList.add('header__mobile-menu--open');
-      overlay.classList.add('overlay--active');
+      if (overlay) overlay.classList.add('overlay--active');
       body.style.overflow = 'hidden';
     }
 
     function close() {
       toggle.setAttribute('aria-expanded', 'false');
       menu.classList.remove('header__mobile-menu--open');
-      overlay.classList.remove('overlay--active');
+      if (overlay) overlay.classList.remove('overlay--active');
       body.style.overflow = '';
     }
 
@@ -58,6 +58,13 @@
     });
 
     if (overlay) overlay.addEventListener('click', close);
+
+    const closeBtns = $$('[data-menu-close]');
+    closeBtns.forEach(function (btn) { btn.addEventListener('click', close); });
+
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
   }
 
   // === Search ===
@@ -65,7 +72,7 @@
     const toggle = $('[data-search-toggle]');
     const panel = $('[data-header-search]');
     const input = $('[data-search-input]');
-    const close = $('[data-search-close]');
+    const closeBtn = $('[data-search-close]');
     if (!toggle || !panel) return;
 
     function open() {
@@ -73,15 +80,15 @@
       if (input) setTimeout(function () { input.focus(); }, 100);
     }
 
-    function close() {
+    function closeSearch() {
       panel.classList.remove('header-search--open');
     }
 
     toggle.addEventListener('click', open);
-    if (close) close.addEventListener('click', close);
+    if (closeBtn) closeBtn.addEventListener('click', closeSearch);
 
     doc.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') closeSearch();
     });
 
     if (input) {
