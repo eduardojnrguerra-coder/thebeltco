@@ -11,6 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/ChatGPT_Image_May_14_2026_03_18_20_PM.png",
     "logo_width": 120,
+    "favicon": "shopify://shop_images/ChatGPT_Image_May_14_2026_06_50_24_PM.png",
     "colors": {
       "color_primary": "#8B5E3C",
       "color_primary_dark": "#6B4226",
@@ -99,7 +100,9 @@
       },
       "header": {
         "type": "header",
-        "settings": {}
+        "settings": {
+          "main_menu": "main-menu"
+        }
       },
       "footer": {
         "type": "footer",
