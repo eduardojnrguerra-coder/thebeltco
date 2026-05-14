@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -16,23 +25,16 @@
       "settings": {
         "heading": "About This Collection",
         "text": "<p>Every belt in this collection is handcrafted from premium full-grain leather, selected for its natural grain, strength, and character. We work directly with South African tanneries to source hides that meet our exacting standards.</p><p>Whether you're dressing up for the office or keeping it casual on the weekend, this collection offers the quality and craftsmanship you expect from TheBeltCo.</p>"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "collection-related": {
       "type": "collection-related",
       "settings": {
         "heading": "Explore More Collections"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     },
     "collection-links": {
       "type": "collection-links",
-      "settings": {
-        "heading": "Helpful Resources"
-      },
       "blocks": {
         "link_1": {
           "type": "link",
@@ -63,7 +65,15 @@
           }
         }
       },
-      "block_order": ["link_1", "link_2", "link_3", "link_4"]
+      "block_order": [
+        "link_1",
+        "link_2",
+        "link_3",
+        "link_4"
+      ],
+      "settings": {
+        "heading": "Helpful Resources"
+      }
     }
   },
   "order": [

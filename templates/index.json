@@ -1,8 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "background_image": "shopify://shop_images/ChatGPT_Image_May_14_2026_01_57_49_PM.png",
         "heading": "Premium Leather Belts Made for Everyday Wear",
         "subheading": "Durable, timeless belts crafted for work, weekends, and years of use.",
         "primary_btn_label": "Shop Belts",
@@ -47,7 +57,6 @@
     "brand-story": {
       "type": "brand-story",
       "settings": {
-        "image": "",
         "heading": "Handcrafted in South Africa",
         "text": "Every belt is crafted from premium full-grain leather, selected for its natural grain and durability. We work with skilled artisans who take pride in creating belts built for work, weekends, and years of use.",
         "btn_label": "Our Story",
@@ -65,9 +74,6 @@
     },
     "testimonials": {
       "type": "testimonials",
-      "settings": {
-        "heading": "What Our Customers Say"
-      },
       "blocks": {
         "testimonial_1": {
           "type": "testimonial",
@@ -94,13 +100,17 @@
           }
         }
       },
-      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+      "block_order": [
+        "testimonial_1",
+        "testimonial_2",
+        "testimonial_3"
+      ],
+      "settings": {
+        "heading": "What Our Customers Say"
+      }
     },
     "faq": {
       "type": "faq",
-      "settings": {
-        "heading": "Frequently Asked Questions"
-      },
       "blocks": {
         "faq_1": {
           "type": "question",
@@ -131,7 +141,15 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4"]
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
     },
     "final-cta": {
       "type": "final-cta",
