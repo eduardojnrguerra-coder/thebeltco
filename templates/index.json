@@ -46,7 +46,7 @@
     "best-sellers": {
       "type": "best-sellers",
       "settings": {
-        "heading": "Best Sellers",
+        "heading": "Popular Picks",
         "subheading": "",
         "collection": "best-sellers",
         "product_limit": 8,
