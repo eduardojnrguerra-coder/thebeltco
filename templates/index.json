@@ -36,8 +36,8 @@
         "heading": "Shop Our Collection",
         "subheading": "",
         "collection": "belts",
-        "product_limit": 24,
-        "grid": "3",
+        "product_limit": 4,
+        "grid": "4",
         "show_quick_add": true,
         "show_view_all": true,
         "view_all_label": "View All"
