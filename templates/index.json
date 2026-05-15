@@ -87,36 +87,44 @@
     "faq": {
       "type": "faq",
       "blocks": {
+        "question_TxGaCT": {
+          "type": "question",
+          "settings": {
+            "question": "When do I get free delivery?",
+            "answer": "Free delivery is available on orders over R500."
+          }
+        },
         "faq_1": {
           "type": "question",
           "settings": {
-            "question": "How do I find my belt size?",
-            "answer": "Measure a belt you already own from the buckle edge to the hole you use most. Alternatively, measure your waist where you wear your belt and add 2 inches."
+            "question": "What size belt should I order?",
+            "answer": "We recommend choosing a belt size slightly larger than your waist size. If you are unsure, check our size guide before ordering."
           }
         },
         "faq_2": {
           "type": "question",
           "settings": {
-            "question": "How long does delivery take?",
-            "answer": "We dispatch orders within 1-2 business days. Delivery takes 2-5 business days within South Africa, depending on your location."
+            "question": "Do you deliver across South Africa?",
+            "answer": "Yes, we deliver nationwide across South Africa."
           }
         },
         "faq_3": {
           "type": "question",
           "settings": {
-            "question": "What is your return policy?",
-            "answer": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt in its original condition for a full refund."
+            "question": "Is online payment secure?",
+            "answer": "Yes, payments are processed securely through PayFast."
           }
         },
         "faq_4": {
           "type": "question",
           "settings": {
-            "question": "Are your belts genuine leather?",
-            "answer": "Yes, all our belts are crafted from premium full-grain leather, sourced ethically and hand-finished by skilled artisans."
+            "question": "Are these belts for formal or casual wear?",
+            "answer": "Our belts are designed for everyday wear and can be styled with jeans, chinos, workwear, or smart-casual outfits."
           }
         }
       },
       "block_order": [
+        "question_TxGaCT",
         "faq_1",
         "faq_2",
         "faq_3",
