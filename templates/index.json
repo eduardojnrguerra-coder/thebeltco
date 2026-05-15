@@ -137,10 +137,10 @@
     "final-cta": {
       "type": "final-cta",
       "settings": {
-        "heading": "Ready for a Belt That Lasts?",
-        "text": "Join thousands of South Africans who choose quality leather. Free delivery on orders over R500.",
-        "btn_label": "Shop Now",
-        "btn_link": ""
+        "heading": "Upgrade Your Everyday Style",
+        "text": "Discover premium leather belts designed for comfort, durability, and timeless everyday wear.",
+        "btn_label": "Shop Leather Belts",
+        "btn_link": "shopify://collections/all"
       }
     }
   },
