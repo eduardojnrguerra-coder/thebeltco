@@ -39,10 +39,16 @@
         <h3 class="footer__heading">{{ 'footer.quick_links' | t }}</h3>
         {%- if linklists[settings.footer_menu] != blank -%}
           <ul class="footer__link-list">
-            {%- for link in linklists[settings.footer_menu].links -%}
-              <li class="footer__link-item">
-                <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
-              </li>
+            {%- assign desired_footer_titles = 'Delivery & Returns|Leather Care Guide|Belt Size Guide|Privacy Policy|Refund Policy|Terms of Service|Contact' | split: '|' -%}
+            {%- for desired_title in desired_footer_titles -%}
+              {%- for link in linklists[settings.footer_menu].links -%}
+                {%- assign current_title = link.title | strip -%}
+                {%- if current_title == desired_title -%}
+                  <li class="footer__link-item">
+                    <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
             {%- endfor -%}
           </ul>
         {%- endif -%}

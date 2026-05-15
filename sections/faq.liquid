@@ -5,7 +5,10 @@
     </div>
 
     <div class="faq__list">
+      {%- assign rendered_faq_keys = '' -%}
       {%- for block in section.blocks -%}
+        {%- assign faq_key = block.settings.question | append: '||' | append: block.settings.answer -%}
+        {%- unless rendered_faq_keys contains faq_key -%}
         {% capture accordion_content %}
           {{ block.settings.answer }}
         {% endcapture %}
@@ -17,6 +20,8 @@
             id: block.id
           %}
         </div>
+          {%- assign rendered_faq_keys = rendered_faq_keys | append: faq_key | append: '##' -%}
+        {%- endunless -%}
       {%- endfor -%}
     </div>
 

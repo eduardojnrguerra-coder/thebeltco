@@ -214,13 +214,13 @@
           <div class="product-info__accordions">
             {%- assign material_text = material_mf | default: section.settings.material_default -%}
             {%- if material_text != blank -%}
-              {%- capture materials_heading -%}{{ 'sections.materials.heading' | t }}{%- endcapture -%}
+              {%- assign materials_heading = 'Materials' -%}
               {% render 'accordion-panel', heading: materials_heading, content: material_text, open: false, id: 'materials' %}
             {%- endif -%}
 
             {%- assign care_text = care_instructions | default: section.settings.care_default -%}
             {%- if care_text != blank -%}
-              {%- capture leather_care_heading -%}{{ 'sections.leather_care.heading' | t }}{%- endcapture -%}
+              {%- assign leather_care_heading = 'Leather Care' -%}
               {% render 'accordion-panel', heading: leather_care_heading, content: care_text, open: false, id: 'leather-care' %}
             {%- endif -%}
 

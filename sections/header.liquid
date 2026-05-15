@@ -8,7 +8,7 @@
     <div class="header__logo">
       {%- if settings.logo != blank -%}
         <a href="{{ routes.root_url }}" class="header__logo-link">
-          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width, onerror: "this.style.display='none'" }}
+          {{ settings.logo | image_url: width: settings.logo_width | image_tag: class: 'header__logo-image', alt: shop.name, width: settings.logo_width }}
         </a>
       {%- else -%}
         <a href="{{ routes.root_url }}" class="header__logo-text">{{ settings.logo_text | default: shop.name }}</a>
@@ -18,21 +18,27 @@
     <nav class="header__nav" data-header-nav role="navigation" aria-label="Main navigation">
       <ul class="header__nav-list">
         {%- assign main_menu = linklists[section.settings.main_menu] -%}
-        {%- for link in main_menu.links -%}
-          <li class="header__nav-item{% if link.links != blank %} header__nav-item--has-submenu{% endif %}">
-            <a href="{{ link.url }}" class="header__nav-link{% if link.active %} header__nav-link--active{% endif %}">
-              {{ link.title }}
-            </a>
-            {%- if link.links != blank -%}
-              <ul class="header__submenu">
-                {%- for sub_link in link.links -%}
-                  <li class="header__submenu-item">
-                    <a href="{{ sub_link.url }}" class="header__submenu-link">{{ sub_link.title }}</a>
-                  </li>
-                {%- endfor -%}
-              </ul>
+        {%- assign desired_nav_titles = 'Home|Shop Belts|Belt Size Guide|Leather Care Guide|Contact' | split: '|' -%}
+        {%- for desired_title in desired_nav_titles -%}
+          {%- for link in main_menu.links -%}
+            {%- assign current_title = link.title | strip -%}
+            {%- if current_title == desired_title -%}
+              <li class="header__nav-item{% if link.links != blank %} header__nav-item--has-submenu{% endif %}">
+                <a href="{{ link.url }}" class="header__nav-link{% if link.active %} header__nav-link--active{% endif %}">
+                  {{ link.title }}
+                </a>
+                {%- if link.links != blank -%}
+                  <ul class="header__submenu">
+                    {%- for sub_link in link.links -%}
+                      <li class="header__submenu-item">
+                        <a href="{{ sub_link.url }}" class="header__submenu-link">{{ sub_link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
             {%- endif -%}
-          </li>
+          {%- endfor -%}
         {%- endfor -%}
       </ul>
     </nav>
@@ -65,19 +71,25 @@
     </div>
     <nav class="header__mobile-nav">
       <ul class="header__mobile-nav-list">
-        {%- for link in main_menu.links -%}
-          <li class="header__mobile-nav-item{% if link.links != blank %} header__mobile-nav-item--has-submenu{% endif %}">
-            <a href="{{ link.url }}" class="header__mobile-nav-link">{{ link.title }}</a>
-            {%- if link.links != blank -%}
-              <ul class="header__mobile-submenu">
-                {%- for sub_link in link.links -%}
-                  <li class="header__mobile-submenu-item">
-                    <a href="{{ sub_link.url }}" class="header__mobile-submenu-link">{{ sub_link.title }}</a>
-                  </li>
-                {%- endfor -%}
-              </ul>
+        {%- assign desired_nav_titles = 'Home|Shop Belts|Belt Size Guide|Leather Care Guide|Contact' | split: '|' -%}
+        {%- for desired_title in desired_nav_titles -%}
+          {%- for link in main_menu.links -%}
+            {%- assign current_title = link.title | strip -%}
+            {%- if current_title == desired_title -%}
+              <li class="header__mobile-nav-item{% if link.links != blank %} header__mobile-nav-item--has-submenu{% endif %}">
+                <a href="{{ link.url }}" class="header__mobile-nav-link">{{ link.title }}</a>
+                {%- if link.links != blank -%}
+                  <ul class="header__mobile-submenu">
+                    {%- for sub_link in link.links -%}
+                      <li class="header__mobile-submenu-item">
+                        <a href="{{ sub_link.url }}" class="header__mobile-submenu-link">{{ sub_link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
             {%- endif -%}
-          </li>
+          {%- endfor -%}
         {%- endfor -%}
       </ul>
     </nav>
