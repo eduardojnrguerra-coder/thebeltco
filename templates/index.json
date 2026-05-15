@@ -42,9 +42,10 @@
     },
     "featured-collection": {
       "type": "featured-collection",
+      "name": "Shop Our Leather Belts",
       "settings": {
         "heading": "Shop Leather Belts",
-        "subheading": "",
+        "subheading": "Premium everyday belts selected for durability, comfort, and timeless style.",
         "collection": "belts",
         "product_limit": 4,
         "grid": "4",
