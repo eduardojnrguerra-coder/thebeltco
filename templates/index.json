@@ -31,15 +31,6 @@
         "badge_4_text": "Timeless Style  Designed to pair effortlessly with everyday and formal wear."
       }
     },
-    "trust-badges": {
-      "type": "trust-badges",
-      "settings": {
-        "badge_1_text": "Genuine Leather",
-        "badge_2_text": "Secure Checkout",
-        "badge_3_text": "South African Store",
-        "badge_4_text": "Easy Returns"
-      }
-    },
     "featured-collection": {
       "type": "featured-collection",
       "name": "Shop Our Leather Belts",
@@ -147,7 +138,6 @@
   "order": [
     "hero",
     "trust_badges_A4wNBz",
-    "trust-badges",
     "featured-collection",
     "best-sellers",
     "brand-story",
