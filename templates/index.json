@@ -21,6 +21,16 @@
         "secondary_btn_link": ""
       }
     },
+    "trust_badges_A4wNBz": {
+      "type": "trust-badges",
+      "name": "Why Choose TheBeltCo?",
+      "settings": {
+        "badge_1_text": "Premium Leather  Carefully selected leather belts made for daily wear and long-term durability.",
+        "badge_2_text": "Secure Checkout  Pay safely online through PayFast with trusted payment options.",
+        "badge_3_text": "Nationwide Delivery  Fast delivery across South Africa with free delivery over R500.",
+        "badge_4_text": "Timeless Style  Designed to pair effortlessly with everyday and formal wear."
+      }
+    },
     "trust-badges": {
       "type": "trust-badges",
       "settings": {
@@ -126,6 +136,7 @@
   },
   "order": [
     "hero",
+    "trust_badges_A4wNBz",
     "trust-badges",
     "featured-collection",
     "best-sellers",
