@@ -57,8 +57,8 @@
     "best-sellers": {
       "type": "best-sellers",
       "settings": {
-        "heading": "Popular Picks",
-        "subheading": "",
+        "heading": "Best Sellers",
+        "subheading": "Our most popular leather belts for everyday wear, work, and smart-casual style.",
         "collection": "best-sellers",
         "product_limit": 8,
         "grid": "4",
