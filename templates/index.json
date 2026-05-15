@@ -68,8 +68,9 @@
     "brand-story": {
       "type": "brand-story",
       "settings": {
-        "heading": "Handcrafted in South Africa",
-        "text": "Every belt is crafted from premium full-grain leather, selected for its natural grain and durability. We work with skilled artisans who take pride in creating belts built for work, weekends, and years of use.",
+        "image": "shopify://shop_images/ChatGPT_Image_May_15_2026_09_45_13_AM.png",
+        "heading": "Built for Everyday Wear",
+        "text": "TheBeltCo was created for people who want simple, reliable leather belts that look good, feel comfortable, and last through everyday use.\n\nWe focus on timeless styles, quality materials, and easy South African online shopping.",
         "btn_label": "Our Story",
         "btn_link": ""
       }
@@ -77,9 +78,9 @@
     "size-guide-teaser": {
       "type": "size-guide-teaser",
       "settings": {
-        "heading": "Find Your Size",
-        "text": "Not sure which size to order? Our simple size guide will help you get the perfect fit.",
-        "btn_label": "Size Guide",
+        "heading": "Find Your Perfect Fit",
+        "text": "Not sure which belt size to choose? Use our simple sizing guide to help you order the right fit the first time.",
+        "btn_label": "View Size Guide",
         "btn_link": "shopify://blogs/news/how-to-choose-the-right-belt-size"
       }
     },
