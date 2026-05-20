@@ -103,7 +103,7 @@
           "type": "question",
           "settings": {
             "question": "Is online payment secure?",
-            "answer": "Yes, payments are processed securely through PayFast."
+            "answer": "Yes. Payments are processed securely through PayFast. You can pay online by card at checkout. TheBeltCo does not store your card details."
           }
         },
         "faq_4": {
