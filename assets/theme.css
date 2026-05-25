@@ -1125,3 +1125,40 @@ th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--colo
   .btn { padding: 0.7rem 1.25rem; }
   .btn--lg { padding: 0.85rem 1.5rem; }
 }
+/* TheBeltCo mobile product card image fix */
+@media screen and (max-width: 749px) {
+  .card-wrapper .media.media--hover-effect > img + img,
+  .card__media .media.media--hover-effect > img + img,
+  .media.media--hover-effect > img + img {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  .card-wrapper .media.media--hover-effect > img:first-child,
+  .card__media .media.media--hover-effect > img:first-child,
+  .media.media--hover-effect > img:first-child {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img:first-child,
+  .card__media:hover .media.media--hover-effect > img:first-child,
+  .media.media--hover-effect:hover > img:first-child {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img + img,
+  .card__media:hover .media.media--hover-effect > img + img,
+  .media.media--hover-effect:hover > img + img {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  .quick-add,
+  .quick-add__submit {
+    display: none !important;
+  }
+}
