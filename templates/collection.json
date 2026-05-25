@@ -11,6 +11,12 @@
   "sections": {
     "main": {
       "type": "main-collection",
+      "custom_css": [
+        ".card__media img,.card-wrapper img,.product-card-wrapper img {opacity: 1 !important; display: block !important;}",
+        ".card-wrapper:hover img,.product-card-wrapper:hover img {opacity: 1 !important; display: block !important;}",
+        ".card__media img:nth-child(2),.card-wrapper img:nth-child(2),.product-card-wrapper img:nth-child(2) {display: none !important; opacity: 0 !important;}",
+        ".quick-add {display: none !important;}"
+      ],
       "settings": {
         "grid_columns": "3",
         "products_per_page": 24,
