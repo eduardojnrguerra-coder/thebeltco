@@ -265,7 +265,62 @@
 </section>
 
 {% render 'sticky-atc' %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector('[data-product-section]');
+  if (!section) return;
 
+  const variants = {{ product.variants | json }};
+  const optionInputs = section.querySelectorAll('[data-option-input]');
+  const variantSelect = section.querySelector('[data-variant-select]');
+  const addButton = section.querySelector('[data-add-to-cart]');
+
+  if (!variantSelect || !optionInputs.length) return;
+
+  function getSelectedOptions() {
+    const optionNames = [...new Set([...optionInputs].map(input => input.name))];
+
+    return optionNames.map(name => {
+      const checked = section.querySelector(`input[name="${CSS.escape(name)}"]:checked`);
+      return checked ? checked.value : null;
+    });
+  }
+
+  function updateVariant() {
+    const selectedOptions = getSelectedOptions();
+
+    const matchedVariant = variants.find(variant => {
+      return variant.options.every((option, index) => option === selectedOptions[index]);
+    });
+
+    if (!matchedVariant) {
+      if (addButton) {
+        addButton.disabled = true;
+        addButton.textContent = 'Unavailable';
+      }
+      return;
+    }
+
+    variantSelect.value = matchedVariant.id;
+    variantSelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+    if (addButton) {
+      addButton.disabled = !matchedVariant.available;
+      addButton.textContent = matchedVariant.available ? 'Add to Cart' : 'Sold Out';
+    }
+
+    const url = new URL(window.location.href);
+    url.searchParams.set('variant', matchedVariant.id);
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  optionInputs.forEach(input => {
+    input.addEventListener('change', updateVariant);
+  });
+
+  updateVariant();
+});
+</script>
 {% schema %}
 {
   "name": "Main product",
