@@ -1,11 +1,20 @@
 {%- liquid
   assign shop_name = shop.name
   assign shop_url = shop.url | default: request.origin
-  assign logo_url = settings.logo | image_url: width: 600
   assign description = shop.description | default: settings.meta_description
+  assign facebook_url = settings.social_facebook | default: settings.social_facebook_link
+  assign instagram_url = settings.social_instagram | default: settings.social_instagram_link
+  assign tiktok_url = settings.social_tiktok | default: settings.social_tiktok_link
+  assign youtube_url = settings.social_youtube_link
+
+  assign has_logo = false
+  if settings.logo != blank
+    assign has_logo = true
+    assign logo_url = settings.logo | image_url: width: 600
+  endif
 
   assign has_social = false
-  if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_tiktok != blank or settings.social_youtube_link != blank
+  if facebook_url != blank or instagram_url != blank or tiktok_url != blank or youtube_url != blank
     assign has_social = true
   endif
 
@@ -21,13 +30,13 @@
   "@type": "Organization",
   "name": {{ shop_name | json }},
   "url": {{ shop_url | json }},
-  "description": {{ description | json }},
-  "logo": {{ logo_url | json }}{% if has_social %},
+  "description": {{ description | json }}{% if has_logo %},
+  "logo": {{ logo_url | json }}{% endif %}{% if has_social %},
   "sameAs": [
-    {%- if settings.social_facebook != blank %}{{ settings.social_facebook | json }}{% endif %}
-    {%- if settings.social_instagram != blank %}{% if settings.social_facebook != blank %},{% endif %}{{ settings.social_instagram | json }}{% endif %}
-    {%- if settings.social_tiktok != blank %}{% if settings.social_facebook != blank or settings.social_instagram != blank %},{% endif %}{{ settings.social_tiktok | json }}{% endif %}
-    {%- if settings.social_youtube_link != blank %}{% if settings.social_facebook != blank or settings.social_instagram != blank or settings.social_tiktok != blank %},{% endif %}{{ settings.social_youtube_link | json }}{% endif %}
+    {%- if facebook_url != blank %}{{ facebook_url | json }}{% endif %}
+    {%- if instagram_url != blank %}{% if facebook_url != blank %},{% endif %}{{ instagram_url | json }}{% endif %}
+    {%- if tiktok_url != blank %}{% if facebook_url != blank or instagram_url != blank %},{% endif %}{{ tiktok_url | json }}{% endif %}
+    {%- if youtube_url != blank %}{% if facebook_url != blank or instagram_url != blank or tiktok_url != blank %},{% endif %}{{ youtube_url | json }}{% endif %}
   ]
   {%- endif -%}
   {%- if has_contact %},

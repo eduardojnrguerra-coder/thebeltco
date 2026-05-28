@@ -14,9 +14,34 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
-    <title>{{ page_title | default: settings.meta_title }}</title>
+    {%- liquid
+      assign seo_title = page_title | default: settings.meta_title
+      assign seo_description = page_description | default: settings.meta_description
 
-    <meta name="description" content="{{ page_description | default: settings.meta_description | escape }}">
+      if template.name == 'index'
+        assign seo_title = 'Leather Belts South Africa | Genuine Leather & Ratchet Belts | TheBeltCo'
+        assign seo_description = 'Shop durable leather belts in South Africa from TheBeltCo. Genuine leather, everyday styles, ratchet belts, easy sizing, and free delivery on orders of R700 or more.'
+      elsif template.name == 'collection' and collection != blank and collection.handle == 'belts'
+        assign default_collection_description = collection.description | strip_html | truncate: 320
+        assign seo_title = "Leather Belts South Africa | Men's Genuine Leather Belts | TheBeltCo"
+        if seo_description == blank or seo_description == settings.meta_description or seo_description == default_collection_description
+          assign seo_description = 'Browse TheBeltCo leather belts for everyday wear, work, smart casual outfits, and gifting. Durable styles, clear sizing, and delivery across South Africa.'
+        endif
+      elsif template.name == 'product' and product != blank
+        assign product_title_with_shop = product.title | append: ' - ' | append: shop.name
+        assign product_title_with_pipe = product.title | append: ' | ' | append: shop.name
+        if seo_title == blank or seo_title == product.title or seo_title == product_title_with_shop or seo_title == product_title_with_pipe
+          assign seo_title = product.title | append: ' | Leather Belt South Africa | TheBeltCo'
+        endif
+        if seo_description == blank or seo_description == settings.meta_description
+          assign seo_description = 'Shop the ' | append: product.title | append: ' from TheBeltCo. A durable belt for everyday wear with clear sizing, secure checkout, and delivery across South Africa.'
+        endif
+      endif
+    -%}
+
+    <title>{{ seo_title | escape }}</title>
+
+    <meta name="description" content="{{ seo_description | strip | escape }}">
 
     {%- liquid
       assign is_noindex = false
@@ -37,7 +62,7 @@
       <meta name="robots" content="noindex">
     {%- endif -%}
 
-    {% render 'social-meta-tags' %}
+    {% render 'social-meta-tags', seo_title: seo_title, seo_description: seo_description %}
 
     {{ content_for_header }}
 
@@ -153,12 +178,21 @@
     {%- endif -%}
 
     {%- if template.name == 'index' -%}
+      {%- liquid
+        assign website_url = shop.url | default: request.origin
+        assign search_target = website_url | append: routes.search_url | append: '?q={search_term_string}'
+      -%}
       <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": {{ shop.name | json }},
-        "url": {{ shop.url | default: request.origin | json }}
+        "url": {{ website_url | json }},
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {{ search_target | json }},
+          "query-input": "required name=search_term_string"
+        }
       }
       </script>
     {%- endif -%}
@@ -166,11 +200,6 @@
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
     </script>
-   <!-- The Belt Co favicon -->
-<link rel="icon" href="{{ 'thebeltco-favicon.ico' | asset_url }}" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ 'thebeltco-favicon-32x32.png' | asset_url }}">
-<link rel="icon" type="image/png" sizes="180x180" href="{{ 'thebeltco-favicon-180x180.png' | asset_url }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ 'thebeltco-favicon-180x180.png' | asset_url }}">
   </head>
 
   <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.name | handle }}-{{ template.suffix }}{% endif %}">
@@ -255,6 +284,11 @@
       bottom: 14px;
       padding: 13px 18px;
       font-size: 14px;
+    }
+
+    body.template-product .thebeltco-whatsapp-button,
+    body.template-cart .thebeltco-whatsapp-button {
+      bottom: 86px;
     }
   }
 </style>

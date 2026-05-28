@@ -3,6 +3,9 @@
   assign canonical = canonical_url | default: (shop.url | default: request.origin | append: product.url)
 
   assign description = product.description | strip_html | truncate: 500
+  if description == blank
+    assign description = product.title
+  endif
   assign images = product.images | map: 'src' | json
 
   assign sku = product.sku | default: product.variants.first.sku
@@ -60,21 +63,8 @@
     assign category = product.collections.first.title
   endif
 
-  assign has_rating = false
-  assign rating_value = ''
-  assign review_count = ''
-  if product.metafields.custom.reviews_rating != blank and product.metafields.custom.reviews_count != blank
-    assign rating_value = product.metafields.custom.reviews_rating
-    assign review_count = product.metafields.custom.reviews_count
-    if rating_value > 0 and review_count > 0
-      assign has_rating = true
-    endif
-  endif
-
-  assign has_return_policy = false
   assign return_days = 30
   if product.metafields.custom.return_policy_days != blank
-    assign has_return_policy = true
     assign return_days = product.metafields.custom.return_policy_days
   endif
 
@@ -119,26 +109,38 @@
       "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
       "itemCondition": "https://schema.org/NewCondition",
       "sku": {{ variant.sku | default: variant.id | json }},
-      "name": {{ variant.title | json }}{% if has_return_policy %},
+      "name": {{ variant.title | json }},
+      "seller": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      },
       "hasMerchantReturnPolicy": {
         "@type": "MerchantReturnPolicy",
         "applicableCountry": "ZA",
         "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
         "merchantReturnDays": {{ return_days | json }},
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
-      }{% endif %}{% if has_shipping %},
-      "shippingDetails": {{ product.metafields.custom.shipping_details | json }}{% endif %}
+        "returnMethod": "https://schema.org/ReturnByMail"
+      },
+      "shippingDetails": {% if has_shipping %}{{ product.metafields.custom.shipping_details | json }}{% else %}{
+        "@type": "OfferShippingDetails",
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "ZA"
+        },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 0,
+          "currency": "ZAR"
+        },
+        "eligibleTransactionVolume": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "ZAR",
+          "price": 700
+        }
+      }{% endif %}
     }{% unless forloop.last %},{% endunless %}
     {%- endfor -%}
-  ]{% if has_rating %},
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": {{ rating_value | json }},
-    "reviewCount": {{ review_count | json }},
-    "bestRating": "5",
-    "worstRating": "1"
-  }{% endif %}
+  ]
 }
 </script>
 {%- endif -%}
