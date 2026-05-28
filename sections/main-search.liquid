@@ -13,6 +13,7 @@
           name="q"
           value="{{ search.terms | escape }}"
           placeholder="{{ 'search.general.placeholder' | t }}"
+          aria-label="{{ 'accessibility.search' | t }}"
           autocomplete="off"
         >
         <button class="btn btn--primary main-search__submit" type="submit">
@@ -22,25 +23,25 @@
     </form>
 
     {%- if search.performed -%}
-      {%- if search.results.size > 0 -%}
-        <p class="main-search__results-count">{{ 'search.general.results_count' | t: count: search.results_count }}</p>
-        <div class="product-grid product-grid--4 columns-4">
-          {%- for item in search.results -%}
-            {%- if item.object_type == 'product' -%}
-              <div class="product-grid__item">
-                {% render 'card-product', product: item, show_quick_add: true %}
-              </div>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-        {%- if search.results_count > 0 -%}
+      {%- paginate search.results by 24 -%}
+        {%- if search.results.size > 0 -%}
+          <p class="main-search__results-count">{{ 'search.general.results_count' | t: count: search.results_count }}</p>
+          <div class="product-grid product-grid--4 columns-4">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                <div class="product-grid__item">
+                  {% render 'card-product', product: item, show_quick_add: true %}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
           {% render 'pagination', paginate: paginate %}
+        {%- else -%}
+          <div class="main-search__empty">
+            <p>{{ 'search.general.no_results' | t: terms: search.terms }}</p>
+          </div>
         {%- endif -%}
-      {%- else -%}
-        <div class="main-search__empty">
-          <p>{{ 'search.general.no_results' | t: terms: search.terms }}</p>
-        </div>
-      {%- endif -%}
+      {%- endpaginate -%}
     {%- endif -%}
   </div>
 </section>

@@ -1,4 +1,21 @@
-{%- if section.blocks.size > 0 -%}
+{%- capture testimonials_markup -%}
+  {%- for block in section.blocks -%}
+    {%- assign testimonial_text = block.settings.text | strip -%}
+    {%- assign testimonial_author = block.settings.author | strip -%}
+    {%- if testimonial_text != blank and testimonial_author != blank -%}
+      <div class="testimonials__item" {{ block.shopify_attributes }}>
+        {% render 'review-card',
+          text: block.settings.text,
+          author: block.settings.author,
+          rating: block.settings.rating
+        %}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign testimonials_markup_stripped = testimonials_markup | strip -%}
+
+{%- if testimonials_markup_stripped != blank -%}
 <section class="testimonials">
   <div class="page-width">
     <div class="section-header">
@@ -6,15 +23,7 @@
     </div>
 
     <div class="testimonials__grid">
-      {%- for block in section.blocks -%}
-        <div class="testimonials__item" {{ block.shopify_attributes }}>
-          {% render 'review-card',
-            text: block.settings.text,
-            author: block.settings.author,
-            rating: block.settings.rating
-          %}
-        </div>
-      {%- endfor -%}
+      {{ testimonials_markup }}
     </div>
   </div>
 </section>

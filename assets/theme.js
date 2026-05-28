@@ -127,7 +127,7 @@
 
     if (input) {
       input.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') close();
+        if (e.key === 'Escape') closeSearch();
       });
     }
   }
@@ -137,9 +137,8 @@
     const drawer = $('[data-cart-drawer]');
     if (!drawer) return;
     const overlay = drawer.querySelector('[data-cart-drawer-overlay]');
-    const closeBtn = $('[data-cart-drawer-close]', drawer);
+    const closeBtns = $$('[data-cart-drawer-close]', drawer);
     const openBtns = $$('[data-cart-toggle]');
-    const continueBtn = $('[data-cart-drawer-close]', drawer);
 
     function open() {
       const menu = $('[data-mobile-menu]');
@@ -161,8 +160,7 @@
 
     openBtns.forEach(function (btn) { btn.addEventListener('click', open); });
     if (overlay) overlay.addEventListener('click', close);
-    if (closeBtn) closeBtn.addEventListener('click', close);
-    if (continueBtn) continueBtn.addEventListener('click', close);
+    closeBtns.forEach(function (btn) { btn.addEventListener('click', close); });
 
     doc.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();

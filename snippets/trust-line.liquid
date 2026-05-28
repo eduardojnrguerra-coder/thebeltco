@@ -1,14 +1,18 @@
 <div class="trust-line">
   <div class="trust-line__item">
-    {% render 'icon', name: 'lock', size: 16 %}
-    <span>{{ 'homepage.trust_badges.secure_checkout' | t }}</span>
+    {% render 'icon', name: 'leaf', size: 16 %}
+    <span>Genuine leather</span>
   </div>
   <div class="trust-line__item">
-    {% render 'icon', name: 'undo', size: 16 %}
-    <span>{{ 'homepage.trust_badges.easy_returns' | t }}</span>
+    {% render 'icon', name: 'lock', size: 16 %}
+    <span>Secure checkout</span>
+  </div>
+  <div class="trust-line__item">
+    {% render 'icon', name: 'map-pin', size: 16 %}
+    <span>Delivery across South Africa</span>
   </div>
   <div class="trust-line__item">
     {% render 'icon', name: 'truck', size: 16 %}
-    <span>{% if settings.delivery_text != blank %}{{ settings.delivery_text }}{% else %}{{ 'sections.delivery_returns.delivery' | t }}{% endif %}</span>
+    <span>Free delivery on orders of R700 or more</span>
   </div>
 </div>

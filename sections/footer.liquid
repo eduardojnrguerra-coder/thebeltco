@@ -11,7 +11,9 @@
             {% form 'customer', class: 'footer__newsletter-form' %}
               <input type="hidden" name="contact[tags]" value="newsletter">
               <div class="footer__newsletter-input-wrapper">
+                <label class="visually-hidden" for="FooterNewsletterEmail">{{ 'sections.newsletter.email_label' | t }}</label>
                 <input
+                  id="FooterNewsletterEmail"
                   class="footer__newsletter-input"
                   type="email"
                   name="contact[email]"

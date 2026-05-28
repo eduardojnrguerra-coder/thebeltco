@@ -6,7 +6,9 @@
       {% form 'customer', class: 'newsletter__form', data-track-event: 'newsletter_signup' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <div class="newsletter__input-wrapper">
+          <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ 'sections.newsletter.email_label' | t }}</label>
           <input
+            id="NewsletterEmail-{{ section.id }}"
             class="newsletter__input"
             type="email"
             name="contact[email]"

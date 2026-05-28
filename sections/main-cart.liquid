@@ -61,11 +61,7 @@
                 <span data-cart-subtotal>{{ cart.total_price | money }}</span>
               </div>
               <p class="cart-summary__shipping">
-                {%- if cart.total_price >= 50000 -%}
-                  {{ 'cart.general.free_shipping' | t }}
-                {%- else -%}
-                  {{ 'cart.general.shipping_at_checkout' | t }}
-                {%- endif -%}
+                {{ 'cart.general.delivery_threshold' | t }}
               </p>
               <button type="submit" class="btn btn--primary btn--lg cart-summary__checkout" name="checkout">
                 {{ 'cart.general.checkout' | t }}

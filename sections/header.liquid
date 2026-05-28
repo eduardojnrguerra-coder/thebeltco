@@ -1,6 +1,6 @@
 <header class="header" data-header{% if settings.sticky_header %} data-header-sticky{% endif %}>
   <div class="page-width header__inner">
-    <button class="header__menu-toggle" data-mobile-menu-toggle aria-label="{{ 'accessibility.menu' | t }}" aria-expanded="false">
+    <button class="header__menu-toggle" data-mobile-menu-toggle type="button" aria-label="{{ 'accessibility.menu' | t }}" aria-expanded="false" aria-controls="MobileMenu">
       {% render 'icon', name: 'menu', size: 24 %}
       {% render 'icon', name: 'close', size: 24, classes: 'header__menu-close-icon' %}
     </button>
@@ -45,7 +45,7 @@
 
     <div class="header__actions">
       {%- if settings.show_search -%}
-        <button class="header__action-btn" data-search-toggle aria-label="{{ 'accessibility.search' | t }}">
+        <button class="header__action-btn" data-search-toggle type="button" aria-label="{{ 'accessibility.search' | t }}" aria-controls="HeaderSearch">
           {% render 'icon', name: 'search', size: 22 %}
         </button>
       {%- endif -%}
@@ -54,7 +54,7 @@
         {% render 'icon', name: 'user', size: 22 %}
       </a>
 
-      <button class="header__action-btn header__cart-btn" data-cart-toggle aria-label="{{ 'accessibility.cart' | t }}">
+      <button class="header__action-btn header__cart-btn" data-cart-toggle type="button" aria-label="{{ 'accessibility.cart' | t }}">
         {% render 'icon', name: 'cart', size: 22 %}
         <span class="header__cart-count" data-cart-count>
           {%- if cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}
@@ -64,9 +64,9 @@
   </div>
 
   <button class="header__mobile-backdrop" data-menu-backdrop type="button" aria-label="Close menu"></button>
-  <div class="header__mobile-menu" data-mobile-menu role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="header__mobile-menu" data-mobile-menu id="MobileMenu" role="dialog" aria-modal="true" aria-label="Navigation">
     <div class="header__mobile-menu-header">
-      <button class="header__mobile-menu-close" data-menu-close aria-label="{{ 'accessibility.close' | t }}">
+      <button class="header__mobile-menu-close" data-menu-close type="button" aria-label="{{ 'accessibility.close' | t }}">
         {% render 'icon', name: 'close', size: 24 %}
       </button>
     </div>
@@ -97,7 +97,7 @@
   </div>
 </header>
 
-<div class="header-search" data-header-search role="dialog" aria-modal="true" aria-label="Search">
+<div class="header-search" data-header-search id="HeaderSearch" role="dialog" aria-modal="true" aria-label="Search">
   <div class="page-width">
     <form action="{{ routes.search_url }}" method="get" class="header-search__form" role="search">
       <input type="hidden" name="type" value="product">
@@ -109,6 +109,7 @@
           name="q"
           value="{{ search.terms | escape }}"
           placeholder="{{ 'search.general.placeholder' | t }}"
+          aria-label="{{ 'accessibility.search' | t }}"
           autocomplete="off"
           data-search-input
         >

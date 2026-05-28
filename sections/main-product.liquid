@@ -52,6 +52,23 @@
           assign size_guide_note = product.metafields.custom.size_guide_note
           assign delivery_note = product.metafields.custom.delivery_note
           assign return_note = product.metafields.custom.return_note
+          assign short_summary = product.metafields.custom.short_summary | default: product.metafields.custom.summary
+          assign buckle_type = product.metafields.custom.buckle_type | default: product.metafields.custom.buckle_material
+          assign best_use = product.metafields.custom.best_use | default: ideal_for
+          assign size_guide_link_url = '/pages/belt-size-guide'
+          if section.settings.size_guide_page != blank
+            assign size_guide_page = pages[section.settings.size_guide_page]
+            if size_guide_page != blank
+              assign size_guide_link_url = size_guide_page.url
+            endif
+          endif
+          assign delivery_returns_link_url = '/pages/delivery-returns'
+          if section.settings.delivery_returns_page != blank
+            assign delivery_returns_page = pages[section.settings.delivery_returns_page]
+            if delivery_returns_page != blank
+              assign delivery_returns_link_url = delivery_returns_page.url
+            endif
+          endif
         -%}
 
         <div class="product-info">
@@ -78,6 +95,13 @@
               <span class="product-info__badge-sale">{{ 'products.card.on_sale' | t }}</span>
             {%- endif -%}
           </div>
+
+          {%- if short_summary == blank and product.description != blank -%}
+            {%- assign short_summary = product.description | strip_html | truncate: 180 -%}
+          {%- endif -%}
+          {%- if short_summary != blank -%}
+            <p class="product-info__summary">{{ short_summary }}</p>
+          {%- endif -%}
 
           {%- if settings.show_sku and product.sku != blank -%}
             <p class="product-info__sku">{{ 'products.product.sku' | t }}: {{ product.sku }}</p>
@@ -136,7 +160,13 @@
                 {%- for option in product.options_with_values -%}
                   <div class="product-info__variant-group">
                     {%- if settings.show_variant_labels -%}
-                      <label class="product-info__variant-label">{{ option.name }}</label>
+                      {%- assign option_name_downcase = option.name | downcase -%}
+                      <div class="product-info__variant-label-row">
+                        <label class="product-info__variant-label">{{ option.name }}</label>
+                        {%- if option_name_downcase contains 'size' -%}
+                          <a href="{{ size_guide_link_url }}" class="product-info__size-guide-link">{{ 'products.product.size_guide' | t }}</a>
+                        {%- endif -%}
+                      </div>
                     {%- endif -%}
                     <div class="product-info__variant-options">
                       {%- for value in option.values -%}
@@ -209,9 +239,42 @@
             </button>
 
             {% render 'trust-line' %}
+
+            <div class="product-info__support-links">
+              <a href="{{ size_guide_link_url }}">{{ 'products.product.size_guide' | t }}</a>
+              <a href="{{ delivery_returns_link_url }}">{{ 'sections.delivery_returns.heading' | t }}</a>
+            </div>
           {% endform %}
 
           <div class="product-info__accordions">
+            {%- capture details_rows -%}
+              {%- if leather_type != blank -%}
+                <li><span>{{ 'products.product.material' | t }}</span><strong>{{ leather_type }}</strong></li>
+              {%- endif -%}
+              {%- if belt_width != blank -%}
+                <li><span>{{ 'products.product.width' | t }}</span><strong>{{ belt_width }}</strong></li>
+              {%- endif -%}
+              {%- if buckle_type != blank -%}
+                <li><span>{{ 'products.product.buckle_type' | t }}</span><strong>{{ buckle_type }}</strong></li>
+              {%- endif -%}
+              {%- if best_use != blank -%}
+                <li><span>{{ 'products.product.best_use' | t }}</span><strong>{{ best_use }}</strong></li>
+              {%- endif -%}
+              {%- if country_of_origin != blank -%}
+                <li><span>{{ 'products.product.origin' | t }}</span><strong>{{ country_of_origin }}</strong></li>
+              {%- endif -%}
+            {%- endcapture -%}
+            {%- assign details_rows_stripped = details_rows | strip -%}
+            {%- if details_rows_stripped != blank -%}
+              {%- capture details_content -%}
+                <ul class="product-info__details-list">
+                  {{ details_rows }}
+                </ul>
+              {%- endcapture -%}
+              {%- assign product_details_heading = 'Product Details' -%}
+              {% render 'accordion-panel', heading: product_details_heading, content: details_content, open: false, id: 'product-details' %}
+            {%- endif -%}
+
             {%- assign material_text = material_mf | default: section.settings.material_default -%}
             {%- if material_text != blank -%}
               {%- assign materials_heading = 'Materials' -%}
@@ -337,6 +400,11 @@ document.addEventListener('DOMContentLoaded', function () {
       "label": "Size guide page (fallback)"
     },
     {
+      "type": "page",
+      "id": "delivery_returns_page",
+      "label": "Delivery & returns page (fallback)"
+    },
+    {
       "type": "header",
       "content": "Default content (when metafields are empty)"
     },
@@ -344,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "textarea",
       "id": "material_default",
       "label": "Materials default text",
-      "default": "Crafted from premium full-grain leather with a durable nickel-free buckle. Our leather is ethically sourced and hand-finished."
+      "default": "Made from leather with a durable buckle and a practical finish for everyday wear."
     },
     {
       "type": "textarea",
@@ -356,13 +424,13 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "textarea",
       "id": "delivery_default",
       "label": "Delivery default text",
-      "default": "Free delivery on orders over R500. Orders dispatched within 1-2 business days."
+      "default": "Free delivery on orders of R700 or more. Orders dispatched within 1-2 business days."
     },
     {
       "type": "textarea",
       "id": "returns_default",
       "label": "Returns default text",
-      "default": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt for a full refund."
+      "default": "We offer a 30-day easy returns policy. Items should be unused and in original condition; see Delivery & Returns for details."
     }
   ]
 }
