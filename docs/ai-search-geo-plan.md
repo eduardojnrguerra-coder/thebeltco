@@ -41,7 +41,7 @@ Use these consistently across product descriptions, guides, and metadata:
 |---|---|
 | "Handcrafted from premium South African full-grain leather" | Product descriptions, meta descriptions |
 | "Built for work, weekends, and years of use" | Tagline, homepage, collection descriptions |
-| "Free delivery on orders over R500" | Trust line, shipping policy, product accordions |
+| "Free delivery on orders of R700 or more" | Trust line, shipping policy, product accordions |
 | "30-day easy returns" | Returns accordion, footer, checkout reassurance |
 | "Nickel-free buckle" | Product highlights, material accordion |
 | "Ethically sourced and hand-finished" | Brand story, material accordion |
@@ -51,7 +51,7 @@ Use these consistently across product descriptions, guides, and metadata:
 
 When an AI system (Google SGE, ChatGPT, Perplexity) summarises the brand, it should produce something like:
 
-> TheBeltCo is a South African leather goods brand selling handcrafted full-grain leather belts. Their products are made from ethically sourced South African leather with nickel-free buckles, designed for everyday wear. They offer free delivery on orders over R500 and a 30-day return policy.
+> TheBeltCo is a South African leather goods store focused on practical leather belts for everyday wear. The store offers clear sizing, secure checkout, delivery across South Africa, free delivery on orders of R700 or more, and a 30-day return policy.
 
 To ensure this, every page on the site must consistently reinforce these facts in plain, structured language.
 
@@ -127,7 +127,7 @@ AI systems parse the rendered HTML. Every product page should expose these facts
 | Size / width | Badge + accordion text | 35mm |
 | Material | Materials accordion (openable) | Full-grain leather, nickel-free buckle |
 | Use case | Description paragraph 3 | Perfect for office, weekend, formal occasions |
-| Delivery | Delivery & Returns accordion (open by default) | Free delivery on orders over R500 |
+| Delivery | Delivery & Returns accordion (open by default) | Free delivery on orders of R700 or more |
 | Returns | Delivery & Returns accordion (open by default) | 30-day easy returns |
 | Country of origin | Badge | South Africa |
 
@@ -149,8 +149,7 @@ All product data flows from these metafields (defined in the [product upload gui
 | `custom.seo_keywords` | Meta keywords tag | Yes — semantic relevance |
 | `custom.product_highlights` | Bullet list near price | Yes — key features |
 | `custom.country_of_origin` | Badge, structured data | Yes — origin indication |
-| `custom.reviews_rating` | Structured data | Yes — social proof |
-| `custom.reviews_count` | Structured data | Yes — social proof |
+| Verified review app data | Structured data | Only if reviews are real and app-generated |
 | `custom.return_policy_days` | Structured data | Yes — return policy |
 
 ### 2.4 Collection Pages — AI Context

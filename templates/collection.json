@@ -30,7 +30,7 @@
       "type": "collection-content",
       "settings": {
         "heading": "About This Collection",
-        "text": "<p>Every belt in this collection is handcrafted from premium full-grain leather, selected for its natural grain, strength, and character. We work directly with South African tanneries to source hides that meet our exacting standards.</p><p>Whether you're dressing up for the office or keeping it casual on the weekend, this collection offers the quality and craftsmanship you expect from TheBeltCo.</p>"
+        "text": "<p>Browse TheBeltCo leather belts for everyday wear, work, smart casual outfits, and gifting. This collection is focused on durable belt styles with clear sizing and delivery across South Africa.</p><p>Need help choosing? Use the size guide before ordering, then pair your belt with simple leather care to keep it looking good for longer.</p>"
       }
     },
     "collection-related": {
@@ -46,28 +46,28 @@
           "type": "link",
           "settings": {
             "label": "Belt Size Guide",
-            "url": ""
+            "url": "/pages/belt-size-guide"
           }
         },
         "link_2": {
           "type": "link",
           "settings": {
             "label": "Leather Care Guide",
-            "url": ""
+            "url": "/pages/leather-care-guide"
           }
         },
         "link_3": {
           "type": "link",
           "settings": {
             "label": "Genuine Leather Belts",
-            "url": ""
+            "url": "/collections/belts"
           }
         },
         "link_4": {
           "type": "link",
           "settings": {
             "label": "Men's Leather Belts",
-            "url": ""
+            "url": "/collections/belts"
           }
         }
       },

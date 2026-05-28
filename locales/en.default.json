@@ -25,16 +25,16 @@
   },
   "homepage": {
     "hero": {
-      "heading": "Premium Leather Belts Made for Everyday Wear",
-      "subheading": "Durable, timeless belts crafted for work, weekends, and years of use.",
+      "heading": "Leather Belts Made for Everyday South African Wear",
+      "subheading": "Durable belts for work, weekends, and smarter everyday outfits.",
       "primary_cta": "Shop Belts",
       "secondary_cta": "View Best Sellers"
     },
     "trust_badges": {
       "genuine_leather": "Genuine Leather",
       "secure_checkout": "Secure Checkout",
-      "sa_store": "South African Store",
-      "easy_returns": "Easy Returns"
+      "sa_store": "Delivery across South Africa",
+      "easy_returns": "Free delivery on orders of R700 or more"
     }
   },
   "products": {
@@ -55,7 +55,13 @@
       "view_full_details": "View full details",
       "description": "Description",
       "from": "From",
-    "ideal_for": "Ideal for"
+      "ideal_for": "Ideal for",
+      "size_guide": "Size guide",
+      "material": "Material",
+      "width": "Width",
+      "buckle_type": "Buckle type",
+      "best_use": "Best use",
+      "origin": "Origin"
     },
     "card": {
       "quick_add": "Quick Add",
@@ -102,8 +108,9 @@
       "error": "Something went wrong. Please try again.",
       "remove": "Remove",
       "update": "Update",
-      "free_shipping": "Free shipping",
-      "shipping_at_checkout": "Shipping calculated at checkout"
+      "free_shipping": "Free delivery on orders of R700 or more",
+      "shipping_at_checkout": "Delivery calculated at checkout",
+      "delivery_threshold": "Free delivery on orders of R700 or more"
     },
     "drawer": {
       "title": "Your Cart",
@@ -193,7 +200,7 @@
     },
     "brand_story": {
       "heading": "Handcrafted in South Africa",
-      "text": "Every belt is crafted from premium full-grain leather, selected for its natural grain and durability. We work with skilled artisans who take pride in creating belts built for work, weekends, and years of use.",
+      "text": "TheBeltCo focuses on practical leather belts for everyday South African wear. We keep the range clear, durable, and easy to shop online.",
       "cta": "Our Story"
     },
     "size_guide": {
@@ -209,13 +216,14 @@
     },
     "final_cta": {
       "heading": "Ready for a Belt That Lasts?",
-      "text": "Join thousands of South Africans who choose quality leather. Free delivery on orders over R500.",
+      "text": "Explore durable leather belts for everyday wear. Free delivery on orders of R700 or more.",
       "cta": "Shop Now"
     },
     "newsletter": {
       "heading": "Stay in the Loop",
       "text": "Subscribe for new arrivals, leather care tips, and exclusive offers.",
       "placeholder": "Your email",
+      "email_label": "Email address",
       "button": "Subscribe",
       "success": "Thanks for subscribing!",
       "error": "Please enter a valid email address."
@@ -223,13 +231,13 @@
     "trust_badges": {
       "genuine_leather": "Genuine Leather",
       "secure_checkout": "Secure Checkout",
-      "sa_store": "South African Store",
-      "easy_returns": "Easy Returns"
+      "sa_store": "Delivery across South Africa",
+      "easy_returns": "Free delivery on orders of R700 or more"
     },
     "delivery_returns": {
       "heading": "Delivery & Returns",
-      "delivery": "Free delivery on orders over R500. Orders dispatched within 1-2 business days.",
-      "returns": "We offer a 30-day easy returns policy. If you're not completely satisfied, return your belt for a full refund."
+      "delivery": "Free delivery on orders of R700 or more. Orders dispatched within 1-2 business days.",
+      "returns": "We offer a 30-day easy returns policy. Items should be unused and in original condition; see Delivery & Returns for details."
     },
     "leather_care": {
       "heading": "Leather Care",
@@ -237,7 +245,7 @@
     },
     "materials": {
       "heading": "Materials",
-      "text": "Crafted from premium full-grain leather with a durable nickel-free buckle. Our leather is ethically sourced and hand-finished."
+      "text": "Made from leather with a durable buckle and a practical finish for everyday wear."
     }
   }
 }

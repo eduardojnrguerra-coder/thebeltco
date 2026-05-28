@@ -156,7 +156,7 @@
 | **Search intent** | Commercial — gift shopping |
 | **Suggested H1** | Leather Belt Gift Guide South Africa |
 | **SEO title** | Leather Belt Gift Guide South Africa | TheBeltCo |
-| **Meta description** | Looking for a leather belt gift in South Africa? Our guide covers the best belt styles for every recipient — from classic brown to formal black. Free delivery on orders over R500. |
+| **Meta description** | Looking for a leather belt gift in South Africa? Our guide covers practical belt styles for different outfits and recipients. Free delivery on orders of R700 or more. |
 | **Article summary** | Gift guide organised by recipient type (husband, dad, boyfriend, colleague, graduate). Includes budget tiers, style recommendations, and gifting tips. Highlights free delivery and gift-ready packaging. |
 | **Internal links** | → Collection: Best Sellers<br>→ Guide: `/blogs/guides/black-vs-brown-leather-belts`<br>→ Product: specific products by category |
 | **CTA** | Shop gift-ready leather belts → |

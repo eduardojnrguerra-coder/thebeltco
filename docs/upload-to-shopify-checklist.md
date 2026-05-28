@@ -34,7 +34,7 @@
 - [ ] Add metafields: `custom.leather_type`, `custom.belt_width`, `custom.country_of_origin`
 - [ ] Add metafields: `custom.material`, `custom.care_instructions`, `custom.size_guide_note`
 - [ ] Add metafields: `custom.delivery_note`, `custom.return_note`
-- [ ] Add metafields: `custom.reviews_rating`, `custom.reviews_count`
+- [ ] Add review/rating data only through a verified reviews app or confirmed real review source
 - [ ] Add metafields: `custom.color`, `custom.buckle_material`
 - [ ] Add metafields: `custom.return_policy_days`, `custom.shipping_details`
 - [ ] Add metafields: `custom.related_products` (product list)

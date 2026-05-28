@@ -13,10 +13,10 @@
       "type": "hero",
       "settings": {
         "background_image": "shopify://shop_images/ChatGPT_Image_May_14_2026_01_57_49_PM.png",
-        "heading": "Premium Leather Belts Made for Everyday Wear",
-        "subheading": "Durable, timeless belts crafted for work, weekends, and years of use.",
+        "heading": "Leather Belts Made for Everyday South African Wear",
+        "subheading": "Durable belts for work, weekends, and smarter everyday outfits.",
         "primary_btn_label": "Shop Belts",
-        "primary_btn_link": "shopify://collections/all",
+        "primary_btn_link": "shopify://collections/belts",
         "secondary_btn_label": "View Best Sellers",
         "secondary_btn_link": ""
       }
@@ -25,10 +25,10 @@
       "type": "trust-badges",
       "name": "Why Choose TheBeltCo?",
       "settings": {
-        "badge_1_text": "Premium Leather  Carefully selected leather belts made for daily wear and long-term durability.",
+        "badge_1_text": "Genuine leather",
         "badge_2_text": "Secure Checkout  Pay safely online through PayFast with trusted payment options.",
-        "badge_3_text": "Nationwide Delivery  Fast delivery across South Africa with free delivery over R500.",
-        "badge_4_text": "Timeless Style  Designed to pair effortlessly with everyday and formal wear."
+        "badge_3_text": "Delivery across South Africa",
+        "badge_4_text": "Free delivery on orders of R700 or more"
       }
     },
     "featured-collection": {
@@ -82,7 +82,7 @@
           "type": "question",
           "settings": {
             "question": "When do I get free delivery?",
-            "answer": "Free delivery is available on orders over R500."
+            "answer": "Free delivery on orders of R700 or more."
           }
         },
         "faq_1": {
@@ -131,7 +131,7 @@
         "heading": "Upgrade Your Everyday Style",
         "text": "Discover premium leather belts designed for comfort, durability, and timeless everyday wear.",
         "btn_label": "Shop Leather Belts",
-        "btn_link": "shopify://collections/all"
+        "btn_link": "shopify://collections/belts"
       }
     }
   },

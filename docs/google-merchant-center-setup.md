@@ -71,8 +71,8 @@
 ### Shipping Settings
 
 ```
-Free shipping over R500     R500.00 threshold    Standard: 2-5 business days
-Flat rate (under R500)      R65.00               Standard: 2-5 business days
+Free delivery on orders of R700 or more     R700.00 threshold    Standard: 2-5 business days
+Flat rate (under R700)                      R65.00               Standard: 2-5 business days
 Express shipping            R120.00              Express: 1-2 business days
 ```
 
@@ -190,7 +190,7 @@ Map these in the Google & YouTube channel under **Feed → Product category mapp
 | Field | Required | Source | Notes |
 |---|---|---|---|
 | **shipping** | ★ | Merchant Center settings or feed | Rate, delivery time, country |
-| **shipping_label** | — | Shopify shipping profile | Free shipping marker |
+| **shipping_label** | — | Shopify shipping profile | Delivery threshold marker |
 | **return_address_label** | — | Merchant Center returns | Must match return policy |
 | **return_policy_label** | — | Merchant Center returns | Refer to your return policy |
 
@@ -291,7 +291,7 @@ Paragraph 6 — Shipping + returns reassurance
 >
 > Wipe clean with a damp cloth. Condition with leather balm every 2–3 months to preserve the finish and prevent drying.
 >
-> Free delivery on orders over R500. 30-day easy returns — if you're not completely satisfied, return your belt for a full refund.
+> Free delivery on orders of R700 or more. 30-day easy returns for unused items in original condition; see Delivery & Returns for details.
 
 ### Rules
 

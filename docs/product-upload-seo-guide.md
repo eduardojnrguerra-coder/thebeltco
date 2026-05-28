@@ -111,7 +111,7 @@ Shipping timeline, free delivery threshold, return window.
 >
 > Wipe clean with a damp cloth. Condition with leather balm every few months to maintain the finish.
 >
-> Free delivery on orders over R500. 30-day easy returns — if you're not happy, send it back.
+> Free delivery on orders of R700 or more. 30-day easy returns — if you're not happy, send it back.
 
 ---
 
@@ -128,7 +128,7 @@ The theme reads these **product metafields** from the `custom` namespace. Define
 | `custom.ideal_for` | Single line text | Displays as small tag badges below the price | Office, Weekend, Formal |
 | `custom.care_instructions` | Multi-line text | Renders in the "Care" accordion tab | Wipe clean with a damp cloth. Condition with leather balm every few months. |
 | `custom.size_guide_note` | Multi-line text | Renders in the "Size Guide" accordion tab | Order your usual pant size. If between sizes, size up. |
-| `custom.delivery_note` | Multi-line text | Renders in the "Delivery & Returns" accordion tab | Free delivery on orders over R500. Orders dispatched within 1-2 business days. |
+| `custom.delivery_note` | Multi-line text | Renders in the "Delivery & Returns" accordion tab | Free delivery on orders of R700 or more. Orders dispatched within 1-2 business days. |
 | `custom.return_note` | Multi-line text | Renders in the "Delivery & Returns" accordion tab | We offer a 30-day easy returns policy. |
 | `custom.seo_keywords` | Single line text | Injected as `<meta name="keywords">` in the page head | full-grain leather belt, South Africa, premium belt, handcrafted |
 | `custom.product_highlights` | Multi-line text | Shows as a bullet list near the price. One highlight per line. | Genuine full-grain leather<br>Nickel-free buckle<br>Handcrafted in South Africa<br>30-day returns |
@@ -219,7 +219,7 @@ Shopify Admin → Product → **Search engine listing preview** → **Meta descr
 
 - 150–160 characters recommended
 - Include a call to action and key benefit
-- Example: "Handcrafted from premium South African full-grain leather. 35mm wide, nickel-free buckle, and built to last. Free delivery on orders over R500."
+- Example: "Durable leather belt for everyday wear. 35mm wide, clear sizing, and built for work or smart casual outfits. Free delivery on orders of R700 or more."
 
 The theme renders this as `<meta name="description">` and `og:description`.
 
