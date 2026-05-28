@@ -20,13 +20,13 @@
   }
 
   function sanitizeInitialUIState() {
-    const overlay = $('#overlay');
+    const header = $('[data-header]');
     const mobileMenu = $('[data-mobile-menu]');
     const menuToggle = $('[data-mobile-menu-toggle]');
     const cartDrawer = $('[data-cart-drawer]');
     const searchPanel = $('[data-header-search]');
 
-    if (overlay) overlay.classList.remove('overlay--active');
+    if (header) header.classList.remove('header--menu-open');
     if (mobileMenu) mobileMenu.classList.remove('header__mobile-menu--open');
     if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     if (cartDrawer) cartDrawer.classList.remove('cart-drawer--open');
@@ -61,16 +61,11 @@
 
   // === Mobile Menu ===
   function initMobileMenu() {
+    const header = $('[data-header]');
     const toggle = $('[data-mobile-menu-toggle]');
     const menu = $('[data-mobile-menu]');
-    const overlay = $('#overlay');
-    if (!toggle || !menu) return;
-
-    function syncState() {
-      const isMenuOpen = menu.classList.contains('header__mobile-menu--open');
-      if (overlay) overlay.classList.toggle('overlay--active', isMenuOpen);
-      lockBodyScroll(isMenuOpen);
-    }
+    const backdrop = $('[data-menu-backdrop]');
+    if (!header || !toggle || !menu) return;
 
     function open() {
       const cartDrawer = $('[data-cart-drawer]');
@@ -78,28 +73,31 @@
       if (cartDrawer) cartDrawer.classList.remove('cart-drawer--open');
       if (searchPanel) searchPanel.classList.remove('header-search--open');
       toggle.setAttribute('aria-expanded', 'true');
-      menu.classList.add('header__mobile-menu--open');
-      syncState();
+      header.classList.add('header--menu-open');
+      lockBodyScroll(true);
     }
 
     function close() {
       toggle.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('header__mobile-menu--open');
-      syncState();
+      header.classList.remove('header--menu-open');
+      lockBodyScroll(false);
+    }
+
+    function isOpen() {
+      return header.classList.contains('header--menu-open');
     }
 
     toggle.addEventListener('click', function () {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      isOpen ? close() : open();
+      isOpen() ? close() : open();
     });
 
-    if (overlay) overlay.addEventListener('click', close);
+    if (backdrop) backdrop.addEventListener('click', close);
 
     const closeBtns = $$('[data-menu-close]');
     closeBtns.forEach(function (btn) { btn.addEventListener('click', close); });
 
     doc.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape' && isOpen()) close();
     });
   }
 
@@ -145,12 +143,12 @@
 
     function open() {
       const menu = $('[data-mobile-menu]');
+      const header = $('[data-header]');
       const menuToggle = $('[data-mobile-menu-toggle]');
       const searchPanel = $('[data-header-search]');
-      const overlay = $('#overlay');
       if (menu) menu.classList.remove('header__mobile-menu--open');
+      if (header) header.classList.remove('header--menu-open');
       if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
-      if (overlay) overlay.classList.remove('overlay--active');
       if (searchPanel) searchPanel.classList.remove('header-search--open');
       drawer.classList.add('cart-drawer--open');
       lockBodyScroll(true);
