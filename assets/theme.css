@@ -1170,3 +1170,29 @@ th, td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--colo
     display: none !important;
   }
 }
+/* Emergency fix: stop menu overlay from blocking clicks */
+.menu-drawer,
+.menu-drawer__inner-container,
+.menu-drawer__navigation,
+.menu-drawer__menu,
+.menu-drawer__menu-item,
+.menu-drawer a {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 9999 !important;
+}
+
+.menu-drawer__overlay,
+.drawer__overlay,
+.modal-overlay,
+.header__overlay {
+  z-index: 9990 !important;
+}
+
+body:not(.menu-opening) .menu-drawer__overlay,
+body:not(.menu-opening) .drawer__overlay,
+body:not(.menu-opening) .modal-overlay,
+body:not(.menu-opening) .header__overlay {
+  pointer-events: none !important;
+  display: none !important;
+}
