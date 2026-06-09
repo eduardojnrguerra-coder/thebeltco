@@ -13,22 +13,22 @@
       "type": "hero",
       "settings": {
         "background_image": "shopify://shop_images/ChatGPT_Image_May_14_2026_01_57_49_PM.png",
-        "heading": "Leather Belts Made for Everyday South African Wear",
-        "subheading": "Durable belts for work, weekends, and smarter everyday outfits.",
+        "heading": "Genuine Leather Belts for Everyday South African Style",
+        "subheading": "Shop men's belts made for work, weekends, smart-casual outfits and everyday wear. Find classic leather belts, ratchet belts and casual styles with nationwide South African delivery.",
         "primary_btn_label": "Shop Belts",
         "primary_btn_link": "shopify://collections/belts",
-        "secondary_btn_label": "View Best Sellers",
-        "secondary_btn_link": ""
+        "secondary_btn_label": "Find Your Belt Size",
+        "secondary_btn_link": "shopify://pages/belt-sizing-guide"
       }
     },
     "trust_badges_A4wNBz": {
       "type": "trust-badges",
       "name": "Why Choose TheBeltCo?",
       "settings": {
-        "badge_1_text": "Genuine leather",
-        "badge_2_text": "Secure Checkout  Pay safely online through PayFast with trusted payment options.",
-        "badge_3_text": "Delivery across South Africa",
-        "badge_4_text": "Free delivery on orders of R700 or more"
+        "badge_1_text": "Genuine leather belts",
+        "badge_2_text": "Secure checkout.",
+        "badge_3_text": "Nationwide delivery.",
+        "badge_4_text": "Free shipping on orders over R700."
       }
     },
     "featured-collection": {
@@ -72,7 +72,7 @@
         "heading": "Find Your Perfect Fit",
         "text": "Not sure which belt size to choose? Use our simple sizing guide to help you order the right fit the first time.",
         "btn_label": "View Size Guide",
-        "btn_link": "shopify://blogs/news/how-to-choose-the-right-belt-size"
+        "btn_link": "shopify://pages/belt-sizing-guide"
       }
     },
     "faq": {
@@ -81,8 +81,8 @@
         "question_TxGaCT": {
           "type": "question",
           "settings": {
-            "question": "When do I get free delivery?",
-            "answer": "Free delivery on orders of R700 or more."
+            "question": "When do I get free shipping?",
+            "answer": "Free shipping on orders over R700."
           }
         },
         "faq_1": {

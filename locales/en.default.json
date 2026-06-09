@@ -25,16 +25,16 @@
   },
   "homepage": {
     "hero": {
-      "heading": "Leather Belts Made for Everyday South African Wear",
-      "subheading": "Durable belts for work, weekends, and smarter everyday outfits.",
+      "heading": "Genuine Leather Belts for Everyday South African Style",
+      "subheading": "Shop men's belts made for work, weekends, smart-casual outfits and everyday wear. Find classic leather belts, ratchet belts and casual styles with nationwide South African delivery.",
       "primary_cta": "Shop Belts",
-      "secondary_cta": "View Best Sellers"
+      "secondary_cta": "Find Your Belt Size"
     },
     "trust_badges": {
-      "genuine_leather": "Genuine Leather",
-      "secure_checkout": "Secure Checkout",
-      "sa_store": "Delivery across South Africa",
-      "easy_returns": "Free delivery on orders of R700 or more"
+      "genuine_leather": "Genuine leather belts",
+      "secure_checkout": "Secure checkout.",
+      "sa_store": "Nationwide delivery.",
+      "easy_returns": "Free shipping on orders over R700."
     }
   },
   "products": {
@@ -108,9 +108,9 @@
       "error": "Something went wrong. Please try again.",
       "remove": "Remove",
       "update": "Update",
-      "free_shipping": "Free delivery on orders of R700 or more",
+      "free_shipping": "Free shipping on orders over R700.",
       "shipping_at_checkout": "Delivery calculated at checkout",
-      "delivery_threshold": "Free delivery on orders of R700 or more"
+      "delivery_threshold": "Free shipping on orders over R700."
     },
     "drawer": {
       "title": "Your Cart",
@@ -216,7 +216,7 @@
     },
     "final_cta": {
       "heading": "Ready for a Belt That Lasts?",
-      "text": "Explore durable leather belts for everyday wear. Free delivery on orders of R700 or more.",
+      "text": "Explore durable leather belts for everyday wear. Free shipping on orders over R700.",
       "cta": "Shop Now"
     },
     "newsletter": {
@@ -229,14 +229,14 @@
       "error": "Please enter a valid email address."
     },
     "trust_badges": {
-      "genuine_leather": "Genuine Leather",
-      "secure_checkout": "Secure Checkout",
-      "sa_store": "Delivery across South Africa",
-      "easy_returns": "Free delivery on orders of R700 or more"
+      "genuine_leather": "Genuine leather belts",
+      "secure_checkout": "Secure checkout.",
+      "sa_store": "Nationwide delivery.",
+      "easy_returns": "Free shipping on orders over R700."
     },
     "delivery_returns": {
       "heading": "Delivery & Returns",
-      "delivery": "Free delivery on orders of R700 or more. Orders dispatched within 1-2 business days.",
+      "delivery": "Free shipping on orders over R700. Orders dispatched within 1-2 business days.",
       "returns": "We offer a 30-day easy returns policy. Items should be unused and in original condition; see Delivery & Returns for details."
     },
     "leather_care": {

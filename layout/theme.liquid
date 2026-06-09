@@ -19,8 +19,8 @@
       assign seo_description = page_description | default: settings.meta_description
 
       if template.name == 'index'
-        assign seo_title = 'Leather Belts South Africa | Genuine Leather & Ratchet Belts | TheBeltCo'
-        assign seo_description = 'Shop durable leather belts in South Africa from TheBeltCo. Genuine leather, everyday styles, ratchet belts, easy sizing, and free delivery on orders of R700 or more.'
+        assign seo_title = 'Genuine Leather Belts South Africa | TheBeltCo'
+        assign seo_description = 'Shop genuine leather belts, ratchet belts, formal belts and casual belts online in South Africa. Secure checkout and free shipping on orders over R700.'
       elsif template.name == 'collection' and collection != blank and collection.handle == 'belts'
         assign default_collection_description = collection.description | strip_html | truncate: 320
         assign seo_title = "Leather Belts South Africa | Men's Genuine Leather Belts | TheBeltCo"

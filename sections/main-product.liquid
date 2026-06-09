@@ -55,14 +55,21 @@
           assign short_summary = product.metafields.custom.short_summary | default: product.metafields.custom.summary
           assign buckle_type = product.metafields.custom.buckle_type | default: product.metafields.custom.buckle_material
           assign best_use = product.metafields.custom.best_use | default: ideal_for
-          assign size_guide_link_url = '/pages/belt-size-guide'
+          assign product_type_downcase = product.type | downcase
+          assign product_tags_downcase = product.tags | join: ',' | downcase
+          assign is_belt_product = false
+          if product_type_downcase contains 'belt' or product_tags_downcase contains 'mens belt' or product_tags_downcase contains 'leather belt' or product_tags_downcase contains 'ratchet belt' or product_tags_downcase contains 'casual belt'
+            assign is_belt_product = true
+          endif
+          assign whatsapp_help_url = 'https://wa.me/27638035628?text=Hi%20TheBeltCo%2C%20I%20need%20help%20choosing%20the%20right%20belt%20size.'
+          assign size_guide_link_url = '/pages/belt-sizing-guide'
           if section.settings.size_guide_page != blank
             assign size_guide_page = pages[section.settings.size_guide_page]
             if size_guide_page != blank
               assign size_guide_link_url = size_guide_page.url
             endif
           endif
-          assign delivery_returns_link_url = '/pages/delivery-returns'
+          assign delivery_returns_link_url = '/pages/deliveries-and-returns'
           if section.settings.delivery_returns_page != blank
             assign delivery_returns_page = pages[section.settings.delivery_returns_page]
             if delivery_returns_page != blank
@@ -76,7 +83,7 @@
             {%- if leather_type != blank -%}
               {% render 'badge', text: leather_type, variant: 'leather', icon: 'leaf' %}
             {%- endif -%}
-            {%- if belt_width != blank -%}
+            {%- if is_belt_product and belt_width != blank -%}
               {% render 'badge', text: belt_width, variant: 'default', icon: 'ruler' %}
             {%- endif -%}
             {%- if country_of_origin != blank -%}
@@ -163,7 +170,7 @@
                       {%- assign option_name_downcase = option.name | downcase -%}
                       <div class="product-info__variant-label-row">
                         <label class="product-info__variant-label">{{ option.name }}</label>
-                        {%- if option_name_downcase contains 'size' -%}
+                        {%- if is_belt_product and option_name_downcase contains 'size' -%}
                           <a href="{{ size_guide_link_url }}" class="product-info__size-guide-link">{{ 'products.product.size_guide' | t }}</a>
                         {%- endif -%}
                       </div>
@@ -186,6 +193,16 @@
                 {%- endfor -%}
               </div>
             {%- endunless -%}
+
+            {%- if is_belt_product -%}
+              <p class="size-help">
+                Not sure which size to choose? View our <a href="{{ size_guide_link_url }}">Belt Size Guide</a> or <a href="{{ whatsapp_help_url }}" target="_blank" rel="noopener">WhatsApp us</a> for help before ordering.
+              </p>
+            {%- else -%}
+              <p class="product-help">
+                Need help with this product? <a href="/pages/contact">Contact TheBeltCo</a> before ordering and we will assist you.
+              </p>
+            {%- endif -%}
 
             <select name="id" class="product-info__variant-select" data-variant-select>
               {%- for variant in product.variants -%}
@@ -241,7 +258,9 @@
             {% render 'trust-line' %}
 
             <div class="product-info__support-links">
-              <a href="{{ size_guide_link_url }}">{{ 'products.product.size_guide' | t }}</a>
+              {%- if is_belt_product -%}
+                <a href="{{ size_guide_link_url }}">{{ 'products.product.size_guide' | t }}</a>
+              {%- endif -%}
               <a href="{{ delivery_returns_link_url }}">{{ 'sections.delivery_returns.heading' | t }}</a>
             </div>
           {% endform %}
@@ -251,10 +270,10 @@
               {%- if leather_type != blank -%}
                 <li><span>{{ 'products.product.material' | t }}</span><strong>{{ leather_type }}</strong></li>
               {%- endif -%}
-              {%- if belt_width != blank -%}
+              {%- if is_belt_product and belt_width != blank -%}
                 <li><span>{{ 'products.product.width' | t }}</span><strong>{{ belt_width }}</strong></li>
               {%- endif -%}
-              {%- if buckle_type != blank -%}
+              {%- if is_belt_product and buckle_type != blank -%}
                 <li><span>{{ 'products.product.buckle_type' | t }}</span><strong>{{ buckle_type }}</strong></li>
               {%- endif -%}
               {%- if best_use != blank -%}
@@ -275,20 +294,29 @@
               {% render 'accordion-panel', heading: product_details_heading, content: details_content, open: false, id: 'product-details' %}
             {%- endif -%}
 
-            {%- assign material_text = material_mf | default: section.settings.material_default -%}
+            {%- assign material_text = material_mf -%}
+            {%- if material_text == blank and is_belt_product -%}
+              {%- assign material_text = section.settings.material_default -%}
+            {%- endif -%}
             {%- if material_text != blank -%}
               {%- assign materials_heading = 'Materials' -%}
               {% render 'accordion-panel', heading: materials_heading, content: material_text, open: false, id: 'materials' %}
             {%- endif -%}
 
-            {%- assign care_text = care_instructions | default: section.settings.care_default -%}
+            {%- assign care_text = care_instructions -%}
+            {%- if care_text == blank and is_belt_product -%}
+              {%- assign care_text = section.settings.care_default -%}
+            {%- endif -%}
             {%- if care_text != blank -%}
               {%- assign leather_care_heading = 'Leather Care' -%}
               {% render 'accordion-panel', heading: leather_care_heading, content: care_text, open: false, id: 'leather-care' %}
             {%- endif -%}
 
-            {%- assign sg_text = size_guide_note | default: '' -%}
-            {%- if sg_text == blank and section.settings.size_guide_page != blank -%}
+            {%- assign sg_text = '' -%}
+            {%- if is_belt_product -%}
+              {%- assign sg_text = size_guide_note | default: '' -%}
+            {%- endif -%}
+            {%- if is_belt_product and sg_text == blank and section.settings.size_guide_page != blank -%}
               {%- assign sg_page = pages[section.settings.size_guide_page] -%}
               {%- assign sg_text = sg_page.content -%}
             {%- endif -%}
@@ -424,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "textarea",
       "id": "delivery_default",
       "label": "Delivery default text",
-      "default": "Free delivery on orders of R700 or more. Orders dispatched within 1-2 business days."
+      "default": "Free shipping on orders over R700. Orders dispatched within 1-2 business days."
     },
     {
       "type": "textarea",

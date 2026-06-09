@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "announcement_text": "Free delivery on orders of R700 or more",
+    "announcement_text": "Free shipping on orders over R700.",
     "logo": "shopify://shop_images/ChatGPT_Image_May_25_2026_12_46_22_PM.png",
     "logo_width": 290,
     "footer_about_text": "Premium leather belts handcrafted in South Africa. Built for work, weekends, and years of use. Secure online card payments via PayFast.",
@@ -39,7 +39,7 @@
     },
     "header": {
       "show_announcement": true,
-      "announcement_text": "Free delivery on orders of R700 or more",
+      "announcement_text": "Free shipping on orders over R700.",
       "announcement_link": "",
       "show_search": true,
       "sticky_header": true,
@@ -65,7 +65,7 @@
       "show_sku": false,
       "show_quantity_selector": true,
       "enable_pickup_availability": false,
-      "delivery_text": "Free delivery on orders of R700 or more",
+      "delivery_text": "Free shipping on orders over R700.",
       "returns_text": "30-day easy returns",
       "show_related": true,
       "related_heading": "Complete the Look",
@@ -86,8 +86,8 @@
       "cart_heading": "Your Cart"
     },
     "seo": {
-      "meta_title": "Leather Belts South Africa | Genuine Leather & Ratchet Belts | TheBeltCo",
-      "meta_description": "Shop durable leather belts in South Africa from TheBeltCo. Genuine leather, everyday styles, ratchet belts, easy sizing, and free delivery on orders of R700 or more.",
+      "meta_title": "Genuine Leather Belts South Africa | TheBeltCo",
+      "meta_description": "Shop genuine leather belts, ratchet belts, formal belts and casual belts online in South Africa. Secure checkout and free shipping on orders over R700.",
       "favicon": null,
       "share_image": null
     },
