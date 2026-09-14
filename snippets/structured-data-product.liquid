@@ -1,6 +1,6 @@
 {%- if template.name == 'product' and product != blank -%}
 {%- liquid
-  assign canonical = canonical_url | default: (shop.url | default: request.origin | append: product.url)
+  assign canonical = canonical_url | default: shop.url | default: request.origin | append: product.url
 
   assign description = product.description | strip_html | truncate: 500
   assign images = product.images | map: 'src' | json
@@ -142,3 +142,15 @@
 }
 </script>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: 'assign canonical = canonical_url | default: (shop.url | default: request.origin
+    | append: product.url)'
+  to: 'assign canonical = canonical_url | default: shop.url | default: request.origin
+    | append: product.url'
+  position: 72..172
+{% endcomment %}

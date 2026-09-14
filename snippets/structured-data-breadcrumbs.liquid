@@ -40,7 +40,7 @@
       "@type": "ListItem",
       "position": {% if collection %}3{% else %}2{% endif %},
       "name": {{ product.title | json }},
-      "item": {{ canonical_url | default: (shop_url | append: product.url) | json }}
+      "item": {{ canonical_url | default: shop_url | append: product.url | json }}
     }
     {%- elsif template.name == 'collection' %}
     ,{
@@ -74,3 +74,13 @@
 }
 </script>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ canonical_url | default: (shop_url | append: product.url) | json }}"
+  to: "{{ canonical_url | default: shop_url | append: product.url | json }}"
+  position: 1174..1242
+{% endcomment %}

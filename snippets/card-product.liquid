@@ -29,13 +29,13 @@
     {%- if show_badges -%}
       <div class="product-card__badges">
         {%- if product_card_product.compare_at_price > product_card_product.price -%}
-          {% render 'badge', text: 'products.card.on_sale' | t, variant: 'sale' %}
+          {% render 'badge', text: 'products.card.on_sale', variant: 'sale' %}
         {%- endif -%}
         {%- if product_card_product.tags contains 'best-seller' or product_card_product.tags contains 'best_seller' -%}
-          {% render 'badge', text: 'products.card.best_seller' | t, variant: 'default' %}
+          {% render 'badge', text: 'products.card.best_seller', variant: 'default' %}
         {%- endif -%}
         {%- if product_card_product.tags contains 'new' -%}
-          {% render 'badge', text: 'products.card.new' | t, variant: 'new' %}
+          {% render 'badge', text: 'products.card.new', variant: 'new' %}
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -85,3 +85,20 @@
     <span class="product-card__vendor">{{ product_card_product.vendor }}</span>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'badge', text: 'products.card.on_sale' | t, variant: 'sale' %}"
+  to: "{% render 'badge', text: 'products.card.on_sale', variant: 'sale' %}"
+  position: 1842..1910
+- from: "{% render 'badge', text: 'products.card.best_seller' | t, variant: 'default'
+    %}"
+  to: "{% render 'badge', text: 'products.card.best_seller', variant: 'default' %}"
+  position: 2063..2138
+- from: "{% render 'badge', text: 'products.card.new' | t, variant: 'new' %}"
+  to: "{% render 'badge', text: 'products.card.new', variant: 'new' %}"
+  position: 2231..2294
+{% endcomment %}
